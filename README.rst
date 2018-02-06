@@ -21,10 +21,10 @@ A theme for the Awesome_ window manager, version 4.x.
 Gallery
 =======
 
-![Desktop](https://github.com/4ban/awesome-ban/raw/master/themes/powerarrow/screen1.png)
+.. image:: https://github.com/4ban/awesome-ban/raw/master/themes/powerarrow/screen1.png
 
 
-![Lock](https://github.com/4ban/awesome-ban/raw/master/themes/powerarrow/screen2.png)
+.. image:: https://github.com/4ban/awesome-ban/raw/master/themes/powerarrow/screen2.png
 
 Installation
 ============
