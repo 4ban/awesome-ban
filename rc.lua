@@ -1,4 +1,3 @@
--- {{{ Required libraries
 local awesome, client, mouse, screen, tag = awesome, client, mouse, screen, tag
 local ipairs, string, os, table, tostring, tonumber, type = ipairs, string, os, table, tostring, tonumber, type
 
@@ -49,9 +48,9 @@ local function run_once(cmd_arr)
 end
 
 --run_once({ "unclutter -root" }) -- entries must be comma-separated
+run_once({ "kbdd" })
 run_once({ "nm-applet -sm-disable" })
 run_once({ "yeahconsole" })
-run_once({ "kbdd" })
 run_once({ "xautolock -time 10 -locker /home/ban/.config/scripts/lock.sh" })
 run_once({ "wmname LG3D" })
 --run_once({ "telegram-desktop" })

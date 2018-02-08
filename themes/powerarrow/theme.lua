@@ -364,7 +364,7 @@ kbdwidget:set_markup("<span foreground='#232323'> Eng </span>")
 
 
 kbdstrings = {[0] = " Eng ",
-              [1] = " Рус "}
+              [1] = " Rus "}
 
 dbus.request_name("session", "ru.gentoo.kbdd")
 dbus.add_match("session", "interface='ru.gentoo.kbdd',member='layoutChanged'")
