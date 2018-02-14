@@ -45,20 +45,13 @@ local function run_once(cmd_arr)
 end
 
 -- Autostart programs
-run_once({ "kbdd" })
-run_once({ "nm-applet -sm-disable" })
-run_once({ "yeahconsole" })
-run_once({ "xautolock -time 10 -locker /home/ban/.config/scripts/lock.sh" })
-run_once({ "wmname LG3D" })
-run_once({ "megasync" })
-run_once({ "yandex-disk-indicator" })
-run_once({ "dropbox" })
+run_once({ "xterm" })
+run_once({ "wmname LG3D" }) -- Fix for java applications
 
 -- Variable definitions
 local themes = {
     "ban",      -- 1
 }
-
 -- Choose the theme
 local chosen_theme = themes[1]
 -- Set false to disable titlebar
@@ -72,7 +65,6 @@ local editor       = os.getenv("EDITOR") or "nano"
 local gui_editor   = "gvim"
 local browser      = "vivaldi-snapshot"
 local guieditor    = "subl3"
-local translate_service = "google"
 
 -- Naughty presets
 naughty.config.defaults.timeout = 5
@@ -181,8 +173,7 @@ lain.layout.cascade.tile.ncol          = 2
 local theme_path = string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), chosen_theme)
 beautiful.init(theme_path)
 
-
---  Menu
+-- Menu
 local myawesomemenu = {
     { "hotkeys", function() return false, hotkeys_popup.show_help end },
     { "manual", terminal .. " -e man awesome" },
@@ -202,6 +193,7 @@ awful.util.mymainmenu = freedesktop.menu.build({
     }
 })
 
+
 -- Screen
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", function(s)
@@ -216,7 +208,7 @@ screen.connect_signal("property::geometry", function(s)
     end
 end)
 -- Create a wibox for each screen and add it
-awful.screen.connect_for_each_screen(function(s) beautiful.connect(s) end)
+awful.screen.connect_for_each_screen(function(s) beautiful.at_screen_connect(s) end)
 
 --  Mouse bindings
 root.buttons(awful.util.table.join(
@@ -225,7 +217,7 @@ root.buttons(awful.util.table.join(
     awful.button({ }, 5, awful.tag.viewprev)
 ))
 
--- {{{ Key bindings
+-- Key bindings
 globalkeys = awful.util.table.join(
     -- Take a screenshot
     -- https://github.com/lcpz/dots/blob/master/bin/screenshot
@@ -503,11 +495,11 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey }, "x", function ()
         awful.spawn(string.format("dmenu_run -i -fn 'Monospace' -nb '%s' -nf '%s' -sb '%s' -sf '%s'",
         beautiful.bg_normal, beautiful.fg_normal, beautiful.bg_focus, beautiful.fg_focus))
-		end,
+    end,
         {description = "show dmenu", group = "launcher"}),
     --]]
     -- Prompt
-    awful.key({ altkey }, "F2", function () awful.util.spawn("dmenu_run -fn 'Source Code Pro Regular-8' -i -l 10 -p 'Run:' -nb '#2d2d2d' -nf '#cccccc' -sb '#ff033e' -sf '#38000d'") end),
+    awful.key({ altkey }, "F2", function () awful.util.spawn(dmenu_settings) end),
     awful.key({ altkey }, "o", function () awful.screen.focused().mypromptbox:run() end,
               {description = "run prompt", group = "launcher"}),
 
