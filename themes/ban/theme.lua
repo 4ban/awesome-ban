@@ -69,10 +69,12 @@ theme.layout_magnifier                          = theme.dir .. "/icons/tile/magn
 theme.layout_floating                           = theme.dir .. "/icons/tile/floating.png"
 
 -- Widget icons
-theme.widget_ac                                 = theme.dir .. "/icons/ac.png"
-theme.widget_battery                            = theme.dir .. "/icons/battery.png"
-theme.widget_battery_low                        = theme.dir .. "/icons/battery_low.png"
-theme.widget_battery_empty                      = theme.dir .. "/icons/battery_empty.png"
+theme.widget_ac                                 = theme.dir .. "/icons/ac.svg"
+theme.widget_battery                            = theme.dir .. "/icons/battery.svg"
+theme.widget_battery_medium                     = theme.dir .. "/icons/battery_medium.svg"
+theme.widget_battery_low                        = theme.dir .. "/icons/battery_low.svg"
+theme.widget_battery_empty                      = theme.dir .. "/icons/battery_empty.svg"
+theme.widget_battery_no                         = theme.dir .. "/icons/battery_no.svg"
 
 theme.widget_mem                                = theme.dir .. "/icons/mem.png"
 theme.widget_cpu                                = theme.dir .. "/icons/cpu.png"
@@ -85,10 +87,10 @@ theme.widget_music_on                           = theme.dir .. "/icons/note_on.p
 theme.widget_music_pause                        = theme.dir .. "/icons/pause.png"
 theme.widget_music_stop                         = theme.dir .. "/icons/stop.png"
 
-theme.widget_vol                                = theme.dir .. "/icons/vol.png"
-theme.widget_vol_low                            = theme.dir .. "/icons/vol_low.png"
-theme.widget_vol_no                             = theme.dir .. "/icons/vol_no.png"
-theme.widget_vol_mute                           = theme.dir .. "/icons/vol_mute.png"
+theme.widget_vol                                = theme.dir .. "/icons/vol.svg"
+theme.widget_vol_low                            = theme.dir .. "/icons/vol_low.svg"
+theme.widget_vol_no                             = theme.dir .. "/icons/vol_no.svg"
+theme.widget_vol_mute                           = theme.dir .. "/icons/vol_mute.svg"
 
 theme.widget_mail                               = theme.dir .. "/icons/mail.png"
 theme.widget_mail_on                            = theme.dir .. "/icons/mail_on.png"
@@ -106,20 +108,20 @@ theme.titlebar_close_button_normal              = theme.dir .. "/icons/titlebar/
 theme.titlebar_ontop_button_focus_active        = theme.dir .. "/icons/titlebar/ontop_focus_active.png"
 theme.titlebar_ontop_button_normal_active       = theme.dir .. "/icons/titlebar/ontop_normal_active.png"
 
-theme.titlebar_ontop_button_focus_inactive      = theme.dir .. "/icons/titlebar/ontop_focus_inactive.png"
-theme.titlebar_ontop_button_normal_inactive     = theme.dir .. "/icons/titlebar/ontop_normal_inactive.png"
+theme.titlebar_ontop_button_focus_inactive      = theme.dir .. "/icons/titlebar/ontop_focus_inactive.svg"
+theme.titlebar_ontop_button_normal_inactive     = theme.dir .. "/icons/titlebar/ontop_normal_inactive.svg"
 
-theme.titlebar_sticky_button_focus_active       = theme.dir .. "/icons/titlebar/sticky_focus_active.png"
-theme.titlebar_sticky_button_normal_active      = theme.dir .. "/icons/titlebar/sticky_normal_active.png"
+theme.titlebar_sticky_button_focus_active       = theme.dir .. "/icons/titlebar/sticky_focus_active.svg"
+theme.titlebar_sticky_button_normal_active      = theme.dir .. "/icons/titlebar/sticky_normal_active.svg"
 
-theme.titlebar_sticky_button_focus_inactive     = theme.dir .. "/icons/titlebar/sticky_focus_inactive.png"
-theme.titlebar_sticky_button_normal_inactive    = theme.dir .. "/icons/titlebar/sticky_normal_inactive.png"
+theme.titlebar_sticky_button_focus_inactive     = theme.dir .. "/icons/titlebar/sticky_focus_inactive.svg"
+theme.titlebar_sticky_button_normal_inactive    = theme.dir .. "/icons/titlebar/sticky_normal_inactive.svg"
 
-theme.titlebar_floating_button_focus_active     = theme.dir .. "/icons/titlebar/floating_focus_active.png"
-theme.titlebar_floating_button_normal_active    = theme.dir .. "/icons/titlebar/floating_normal_active.png"
+theme.titlebar_floating_button_focus_active     = theme.dir .. "/icons/titlebar/floating_focus_active.svg"
+theme.titlebar_floating_button_normal_active    = theme.dir .. "/icons/titlebar/floating_normal_active.svg"
 
-theme.titlebar_floating_button_focus_inactive   = theme.dir .. "/icons/titlebar/floating_focus_inactive.png"
-theme.titlebar_floating_button_normal_inactive  = theme.dir .. "/icons/titlebar/floating_normal_inactive.png"
+theme.titlebar_floating_button_focus_inactive   = theme.dir .. "/icons/titlebar/floating_focus_inactive.svg"
+theme.titlebar_floating_button_normal_inactive  = theme.dir .. "/icons/titlebar/floating_normal_inactive.svg"
 
 theme.titlebar_maximized_button_focus_active    = theme.dir .. "/icons/titlebar/maximized_focus_active.png"
 theme.titlebar_maximized_button_normal_active   = theme.dir .. "/icons/titlebar/maximized_normal_active.png"
@@ -137,7 +139,7 @@ local markup = lain.util.markup
 local separators = lain.util.separators
 
 -- Widgets
-mytextclock_icon = wibox.widget.imagebox(theme.widget_clock)
+mytextclockicon = wibox.widget.imagebox(theme.widget_clock)
 mytextclock = awful.widget.textclock("<span font=\"Meslo LGS Regular 10\" color=\"#232323\"> %a %d %b  %H:%M</span>")
 
 -- Calendar
@@ -270,9 +272,14 @@ local bat = lain.widget.bat({
                 --theme.batcolor = "#e35d6a"
                 baticon:set_image(theme.widget_battery_empty)
                 widget:set_markup(markup.font(theme.font, markup.fg.color("#232323", " -" .. bat_now.perc .. "% [" .. bat_now.watt .. "W][" .. bat_now.time .. "]")))
+            elseif tonumber(bat_now.perc) <= 60 then
+                --theme.batcolor = "#e35d6a"
+                baticon:set_image(theme.widget_battery_low)
+                widget:set_markup(markup.font(theme.font, markup.fg.color("#232323", " -" .. bat_now.perc .. "% [" .. bat_now.watt .. "W][" .. bat_now.time .. "]")))
+            
             elseif tonumber(bat_now.perc) <= 80 then
                 --theme.batcolor = "#ffbf00"
-                baticon:set_image(theme.widget_battery_low)
+                baticon:set_image(theme.widget_battery_medium)
                 widget:set_markup(markup.font(theme.font, markup.fg.color("#232323", " -" .. bat_now.perc .. "% [" .. bat_now.watt .. "W][" .. bat_now.time .. "]")))
             elseif tonumber(bat_now.perc) <= 99 then
                 --theme.batcolor = "#ffbf00"
@@ -286,7 +293,7 @@ local bat = lain.widget.bat({
         else
             --theme.batcolor = "#e35d6a"
             widget:set_markup(markup.font(theme.font, markup.fg.color("#232323", " AC ")))
-            baticon:set_image(theme.widget_ac)
+            baticon:set_image(theme.widget_battery_no)
         end
     end
 })
@@ -453,7 +460,7 @@ function theme.connect(s)
             arrow(theme.bg_normal, "#428bca"),
             wibox.container.background(wibox.container.margin(wibox.widget { kbdwidget, layout = wibox.layout.align.horizontal }, 1, 1), "#428bca"),
             arrow("#428bca", "#f18e38"),
-            wibox.container.background(wibox.container.margin(volumewidget, 1, 1), "#f18e38"),
+            wibox.container.background(wibox.container.margin(wibox.widget { volicon, volumewidget, layout = wibox.layout.align.horizontal }, 1, 1), "#f18e38"),
             arrow("#f18e38", "#b391db"),
             wibox.container.background(wibox.container.margin(wibox.widget { fsicon, theme.fs.widget, layout = wibox.layout.align.horizontal }, 1, 1), "#b391db"),
             arrow("#b391db", "#428bca"),
@@ -465,7 +472,7 @@ function theme.connect(s)
             arrow("#b391db", theme.batcolor),
             wibox.container.background(wibox.container.margin(wibox.widget { baticon, batwidget, bat.widget, layout = wibox.layout.align.horizontal }, 1, 1), theme.batcolor),
             arrow(theme.batcolor, "#f18e38"),
-            wibox.container.background(wibox.container.margin(mytextclock, 1, 1), "#f18e38"),
+            wibox.container.background(wibox.container.margin(wibox.widget {mytextclock, layout = wibox.layout.align.horizontal }, 1, 1), "#f18e38"),
             arrow("#f18e38", "#232323"),
             s.mylayoutbox,
         },
