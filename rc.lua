@@ -50,9 +50,9 @@ run_once({ "nm-applet -sm-disable" })
 run_once({ "yeahconsole" })
 run_once({ "xautolock -time 10 -locker /home/ban/.config/scripts/lock.sh" })
 run_once({ "wmname LG3D" })
--- run_once({ "megasync" })
--- run_once({ "yandex-disk-indicator" })
--- run_once({ "dropbox" })
+run_once({ "megasync" })
+run_once({ "yandex-disk-indicator" })
+run_once({ "dropbox" })
 
 -- Variable definitions
 local themes = {
