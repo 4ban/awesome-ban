@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="48"
+   height="48"
+   id="svg3760"
+   version="1.1"
+   inkscape:version="0.48.5 r10040"
+   sodipodi:docname="tab-detach.svg">
+  <defs
+     id="defs3762" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="5.2729946"
+     inkscape:cx="-30.872878"
+     inkscape:cy="22.876587"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1280"
+     inkscape:window-height="670"
+     inkscape:window-x="-2"
+     inkscape:window-y="-3"
+     inkscape:window-maximized="1"
+     showguides="true"
+     inkscape:guide-bbox="true">
+    <sodipodi:guide
+       position="8.9999856,39.000012"
+       orientation="30,0"
+       id="guide3265" />
+    <sodipodi:guide
+       position="8.9999856,9.0000118"
+       orientation="0,30"
+       id="guide3267" />
+    <sodipodi:guide
+       position="38.999986,9.0000118"
+       orientation="-30,0"
+       id="guide3269" />
+    <sodipodi:guide
+       position="38.999986,39.000012"
+       orientation="0,-30"
+       id="guide3271" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata3765">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-550.28572,-582.6479)">
+    <g
+       id="g3201"
+       transform="matrix(0.67449691,0,0,0.65853461,182.04758,202.03038)">
+      <g
+         id="g3147">
+        <path
+           id="rect3033"
+           transform="translate(550.28572,582.6479)"
+           d="M 9,13.84375 9,39 l 30,0 0,-25.15625 -17.90625,0 0,0.65625 16.59375,0 0,23.5625 -27.21875,0 0,-23.5625 0.0625,0 0,-0.65625 -1.53125,0 z"
+           style="color:#000000;fill:#8c8c8c;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.80000000999999998;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+           inkscape:connector-curvature="0" />
+      </g>
+      <rect
+         y="591.65698"
+         x="559.28064"
+         height="5.4884157"
+         width="12.376172"
+         id="rect3061"
+         style="color:#000000;fill:#8c8c8c;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.80000000999999998;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+    </g>
+    <g
+       transform="matrix(0.67449691,0,0,0.65853461,192.09879,212.27124)"
+       id="g3214">
+      <g
+         id="g3216">
+        <path
+           inkscape:connector-curvature="0"
+           style="color:#000000;fill:#8c8c8c;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.80000000999999998;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+           d="M 9,13.84375 9,39 l 30,0 0,-25.15625 -17.90625,0 0,0.65625 16.59375,0 0,23.5625 -27.21875,0 0,-23.5625 0.0625,0 0,-0.65625 -1.53125,0 z"
+           transform="translate(550.28572,582.6479)"
+           id="path3218" />
+      </g>
+      <rect
+         style="color:#000000;fill:#8c8c8c;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.80000000999999998;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+         id="rect3220"
+         width="12.376172"
+         height="5.4884157"
+         x="559.28064"
+         y="591.65698" />
+    </g>
+  </g>
+</svg>
