@@ -3,7 +3,7 @@
 ## Description
 A theme for the Awesome window manager, version 4.x.
 
-Inspired by [awesome-copycats](https://github.com/lcpz/awesome-copycats)]
+Inspired by [awesome-copycats](https://github.com/lcpz/awesome-copycats)
 
 ## Gallery
 
@@ -29,7 +29,7 @@ Enable/Disable titlebar
 ## Requirements
 Complements are provided by [Lain](https://github.com/lcpz/lain) and [freedesktop](https://github.com/lcpz/freedesktop) and [scratch](https://github.com/proteansec/awesome-scratch).
 
-Fonts are Terminus, Tamzen, Meslo LGS and Tamsyn.
+Fonts are `Terminus, Tamzen, Meslo LGS and Tamsyn`
 
 GTK3 theme - `Arc-Dark`
 
