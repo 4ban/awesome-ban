@@ -48,7 +48,7 @@ end
 run_once({ "kbdd" })
 run_once({ "nm-applet -sm-disable" })
 run_once({ "yeahconsole" })
-run_once({ "xautolock -time 10 -locker /home/ban/.config/scripts/lock.sh" })
+run_once({ "xautolock -time 10 -locker ~/.config/scripts/lock.sh" })
 run_once({ "wmname LG3D" })
 run_once({ "megasync" })
 run_once({ "yandex-disk-indicator" })
@@ -62,7 +62,7 @@ local themes = {
 -- Choose the theme
 local chosen_theme = themes[1]
 -- Set false to disable titlebar
-local window_titlebar = true  
+local window_titlebar = false  
 -- Settings for dmenu prompt
 local dmenu_settings = "dmenu_run -fn 'Source Code Pro Regular-8' -i -l 10 -p 'Run:' -nb '#2d2d2d' -nf '#cccccc' -sb '#ff033e' -sf '#38000d'"
 local modkey       = "Mod4"
@@ -82,11 +82,11 @@ naughty.config.defaults.margin = 8
 naughty.config.defaults.gap = 1
 naughty.config.defaults.ontop = true
 naughty.config.defaults.font = "Meslo LGS Regular 10"
-naughty.config.defaults.icon = nil
+naughty.config.defaults.icon = beautiful.warning
 naughty.config.defaults.icon_size = 32
-naughty.config.defaults.fg = beautiful.fg_tooltip
-naughty.config.defaults.bg = beautiful.bg_tooltip
-naughty.config.defaults.border_color = beautiful.border_tooltip
+naughty.config.defaults.fg = beautiful.fg_normal
+naughty.config.defaults.bg = beautiful.bg_normal
+naughty.config.defaults.border_color = beautiful.border_color
 naughty.config.defaults.border_width = 2
 naughty.config.defaults.hover_timeout = nil
 
@@ -649,7 +649,7 @@ awful.rules.rules = {
       properties = { screen = 1, switchtotag = true, tag = awful.util.tagnames[4] } },
     { rule = { class = "Subl3" },
       properties = { screen = 1, switchtotag = true, tag = awful.util.tagnames[1] } },
-    -- Caja is floating with fixed sizes. Titelbar enabled for Caja only
+    -- Caja is floating with fixed sizes. Titelbar enabled for Caja
     { rule = { class = "Caja" },
       properties = { floating = true, titlebars_enabled = true, geometry = { x=200, y=150, height=600, width=1100 } } },
     { rule = { class = "Nm-connection-editor" },
@@ -660,14 +660,15 @@ awful.rules.rules = {
       properties = { screen = 1, tag = awful.util.tagnames[2] } },
     { rule = { class = "jetbrains-pycharm" },
       properties = { screen = 1, tag = awful.util.tagnames[2] } },
+    -- Disable titelbar for browsers
     { rule = { class = "Vivaldi-stable" },
-      properties = { screen = 1, switchtotag = true, tag = awful.util.tagnames[3] } },
+      properties = { screen = 1, titlebars_enabled = false, switchtotag = true, tag = awful.util.tagnames[3] } },
     { rule = { class = "Vivaldi-snapshot" },
-      properties = { screen = 1, switchtotag = true, tag = awful.util.tagnames[3] } },
+      properties = { screen = 1, titlebars_enabled = false, switchtotag = true, tag = awful.util.tagnames[3] } },
     { rule = { class = "Google-chrome" },
-      properties = { screen = 1, switchtotag = true, tag = awful.util.tagnames[4] } },
+      properties = { screen = 1, titlebars_enabled = false, switchtotag = true, tag = awful.util.tagnames[4] } },
     { rule = { class = "Google-chrome-unstable" },
-      properties = { screen = 1, tag = awful.util.tagnames[5] } },
+      properties = { screen = 1, titlebars_enabled = false, tag = awful.util.tagnames[5] } },
     { rule = { class = "Transmission-gtk" },
       properties = { screen = 1, switchtotag = true, tag = awful.util.tagnames[6] } },
     { rule = { instance = "plugin-container" },
