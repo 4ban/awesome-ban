@@ -42,10 +42,11 @@ theme.notification_font                         = "Meslo LGS Regular 12"
 theme.notification_bg                           = "#5cb85c"
 theme.notification_fg                           = "#232323"
 theme.notification_border_width                 = 0
-theme.notification_border_color                 = "#5cb87c"
+theme.notification_border_color                 = theme.bg_normal
 theme.notification_shape                        = gears.shape.infobubble
 theme.notification_opacity                      = 1
 theme.notification_margin                       = 30
+theme.warning                                   = theme.dir .. "/icons/status/warning.png"
 --theme.notification_width                        = 300
 --theme.notification_height                       = 200
 
@@ -139,35 +140,35 @@ local markup = lain.util.markup
 local separators = lain.util.separators
 
 -- Widgets
-mytextclockicon = wibox.widget.imagebox(theme.widget_clock)
-mytextclock = awful.widget.textclock("<span font=\"Meslo LGS Regular 10\" color=\"#232323\"> %a %d %b  %H:%M</span>")
+local clock_icon = wibox.widget.imagebox(theme.widget_clock)
+local clock_widget = awful.widget.textclock("<span font=\"Meslo LGS Regular 10\" color=\"#232323\"> %a %d %b  %H:%M</span>")
 
 -- Calendar
-theme.cal = lain.widget.calendar({
+local calendar = lain.widget.calendar({
     cal = "cal --color=always",
-    attach_to = { mytextclock },
+    attach_to = { clock_widget },
     notification_preset = {
         font = "Meslo LGS Regular 10",
-        fg   = "#232323",
-        bg   = "#428bca"
+        fg   = theme.fg_normal,
+        bg   = theme.bg_normal
     }
 })
 
 -- ALSA volume bar
-local volicon = wibox.widget.imagebox(theme.widget_vol)
+local vol_icon = wibox.widget.imagebox(theme.widget_vol)
 theme.volume = lain.widget.alsabar({
     width = 45, border_width = 0, ticks = true, ticks_size = 5,
     notification_preset = { font = theme.font },
     --togglechannel = "IEC958,3",
     settings = function()
         if volume_now.status == "off" then
-            volicon:set_image(theme.widget_vol_mute)
+            vol_icon:set_image(theme.widget_vol_mute)
         elseif volume_now.level == 0 then
-            volicon:set_image(theme.widget_vol_no)
+            vol_icon:set_image(theme.widget_vol_no)
         elseif volume_now.level <= 50 then
-            volicon:set_image(theme.widget_vol_low)
+            vol_icon:set_image(theme.widget_vol_low)
         else
-            volicon:set_image(theme.widget_vol)
+            vol_icon:set_image(theme.widget_vol)
         end
     end,
     colors = {
@@ -199,10 +200,10 @@ theme.volume.bar:buttons(awful.util.table.join (
           end)
 ))
 local volumebg = wibox.container.background(theme.volume.bar, "#888888", gears.shape.rectangle)
-local volumewidget = wibox.container.margin(volumebg, 2, 7, 4, 4)
+local volume_widget = wibox.container.margin(volumebg, 2, 7, 4, 4)
 
 -- MEM
-local memicon = wibox.widget.imagebox(theme.widget_mem)
+local mem_icon = wibox.widget.imagebox(theme.widget_mem)
 local mem = lain.widget.mem({
     settings = function()
         widget:set_markup(markup.font(theme.font, markup.fg.color("#232323", " " .. mem_now.used .. "MB [" .. mem_now.perc .. "%]")))
@@ -210,7 +211,7 @@ local mem = lain.widget.mem({
 })
 
 -- CPU
-local cpuicon = wibox.widget.imagebox(theme.widget_cpu)
+local cpu_icon = wibox.widget.imagebox(theme.widget_cpu)
 local cpu = lain.widget.cpu({
     settings = function()
         widget:set_markup(markup.font(theme.font, markup.fg.color("#232323", " " .. cpu_now.usage .. "% ")))
@@ -218,27 +219,27 @@ local cpu = lain.widget.cpu({
 })
 
 -- Coretemp (lain, average)
+local temp_icon = wibox.widget.imagebox(theme.widget_temp)
 local temp = lain.widget.temp({
     settings = function()
         widget:set_markup(markup.font(theme.font, markup.fg.color("#232323", " " .. coretemp_now .. "° ")))
     end
 })
 
-local tempicon = wibox.widget.imagebox(theme.widget_temp)
 
 -- fs
-local fsicon = wibox.widget.imagebox(theme.widget_hdd)
+local fs_icon = wibox.widget.imagebox(theme.widget_hdd)
 theme.fs = lain.widget.fs({
     options  = "--exclude-type=tmpfs",
     partition = "/home",
-    notification_preset = { fg = "#232323", bg = "#f5622c", font = "xos4 Terminus 10" },
+    notification_preset = { fg = theme.fg_normal, bg = theme.bg_normal, font = "xos4 Terminus 10" },
     settings = function()
         widget:set_markup(markup.font(theme.font, markup.fg.color("#232323", " " .. fs_now.available_gb .. "GB ")))
     end
 })
 
 -- Battery
-local baticon = wibox.widget.imagebox(theme.widget_battery)
+local bat_icon = wibox.widget.imagebox(theme.widget_battery)
 local bat = lain.widget.bat({
     battery = "BAT0",
     timeout = 1,
@@ -263,37 +264,37 @@ local bat = lain.widget.bat({
         if bat_now.status ~= "N/A" then
             if bat_now.status == "Charging" then
                 widget:set_markup(markup.font(theme.font, markup.fg.color("#232323", " +" .. bat_now.perc .. "% [" .. bat_now.watt .. "W][" .. bat_now.time .. "]")))
-                baticon:set_image(theme.widget_ac)
+                bat_icon:set_image(theme.widget_ac)
             elseif bat_now.status == "Full" then
                 --theme.batcolor = "#428bca"
                 widget:set_markup(markup.font(theme.font, markup.fg.color("#232323", " ~" .. bat_now.perc .. "% [" .. bat_now.watt .. "W][" .. bat_now.time .. "]")))
-                baticon:set_image(theme.widget_battery)
+                bat_icon:set_image(theme.widget_battery)
             elseif tonumber(bat_now.perc) <= 35 then
                 --theme.batcolor = "#e35d6a"
-                baticon:set_image(theme.widget_battery_empty)
+                bat_icon:set_image(theme.widget_battery_empty)
                 widget:set_markup(markup.font(theme.font, markup.fg.color("#232323", " -" .. bat_now.perc .. "% [" .. bat_now.watt .. "W][" .. bat_now.time .. "]")))
             elseif tonumber(bat_now.perc) <= 60 then
                 --theme.batcolor = "#e35d6a"
-                baticon:set_image(theme.widget_battery_low)
+                bat_icon:set_image(theme.widget_battery_low)
                 widget:set_markup(markup.font(theme.font, markup.fg.color("#232323", " -" .. bat_now.perc .. "% [" .. bat_now.watt .. "W][" .. bat_now.time .. "]")))
             
             elseif tonumber(bat_now.perc) <= 80 then
                 --theme.batcolor = "#ffbf00"
-                baticon:set_image(theme.widget_battery_medium)
+                bat_icon:set_image(theme.widget_battery_medium)
                 widget:set_markup(markup.font(theme.font, markup.fg.color("#232323", " -" .. bat_now.perc .. "% [" .. bat_now.watt .. "W][" .. bat_now.time .. "]")))
             elseif tonumber(bat_now.perc) <= 99 then
                 --theme.batcolor = "#ffbf00"
-                baticon:set_image(theme.widget_battery)
+                bat_icon:set_image(theme.widget_battery)
                 widget:set_markup(markup.font(theme.font, markup.fg.color("#232323", " -" .. bat_now.perc .. "% [" .. bat_now.watt .. "W][" .. bat_now.time .. "]")))
             else
                 --theme.batcolor = "#5cb85c"
-                baticon:set_image(theme.widget_battery)
+                bat_icon:set_image(theme.widget_battery)
                 widget:set_markup(markup.font(theme.font, markup.fg.color("#232323", " -" .. bat_now.perc .. "% [" .. bat_now.watt .. "W][" .. bat_now.time .. "]")))
             end
         else
             --theme.batcolor = "#e35d6a"
             widget:set_markup(markup.font(theme.font, markup.fg.color("#232323", " AC ")))
-            baticon:set_image(theme.widget_battery_no)
+            bat_icon:set_image(theme.widget_battery_no)
         end
     end
 })
@@ -336,7 +337,7 @@ local batupd = lain.widget.bat({
     end
 })
 local batbg = wibox.container.background(batbar, "#474747", gears.shape.rectangle)
-local batwidget = wibox.container.margin(batbg, 2, 7, 4, 4)
+local bat_widget = wibox.container.margin(batbg, 2, 7, 4, 4)
 
 -- Keyboard layout switcher
 kbdwidget = wibox.widget.textbox()
@@ -460,19 +461,19 @@ function theme.connect(s)
             arrow(theme.bg_normal, "#428bca"),
             wibox.container.background(wibox.container.margin(wibox.widget { kbdwidget, layout = wibox.layout.align.horizontal }, 1, 1), "#428bca"),
             arrow("#428bca", "#f18e38"),
-            wibox.container.background(wibox.container.margin(wibox.widget { volicon, volumewidget, layout = wibox.layout.align.horizontal }, 1, 1), "#f18e38"),
+            wibox.container.background(wibox.container.margin(wibox.widget { vol_icon, volume_widget, layout = wibox.layout.align.horizontal }, 1, 1), "#f18e38"),
             arrow("#f18e38", "#b391db"),
-            wibox.container.background(wibox.container.margin(wibox.widget { fsicon, theme.fs.widget, layout = wibox.layout.align.horizontal }, 1, 1), "#b391db"),
+            wibox.container.background(wibox.container.margin(wibox.widget { fs_icon, theme.fs.widget, layout = wibox.layout.align.horizontal }, 1, 1), "#b391db"),
             arrow("#b391db", "#428bca"),
-            wibox.container.background(wibox.container.margin(wibox.widget { tempicon, temp.widget, layout = wibox.layout.align.horizontal }, 1, 1), "#428bca"), 
+            wibox.container.background(wibox.container.margin(wibox.widget { temp_icon, temp.widget, layout = wibox.layout.align.horizontal }, 1, 1), "#428bca"), 
             arrow("#428bca", "#f18e38"),
-            wibox.container.background(wibox.container.margin(wibox.widget { cpuicon, cpu.widget, layout = wibox.layout.align.horizontal }, 1, 1), "#f18e38"),
+            wibox.container.background(wibox.container.margin(wibox.widget { cpu_icon, cpu.widget, layout = wibox.layout.align.horizontal }, 1, 1), "#f18e38"),
             arrow("#f18e38", "#b391db"),
-            wibox.container.background(wibox.container.margin(wibox.widget { memicon, mem.widget, layout = wibox.layout.align.horizontal }, 1, 1), "#b391db"),
+            wibox.container.background(wibox.container.margin(wibox.widget { mem_icon, mem.widget, layout = wibox.layout.align.horizontal }, 1, 1), "#b391db"),
             arrow("#b391db", theme.batcolor),
-            wibox.container.background(wibox.container.margin(wibox.widget { baticon, batwidget, bat.widget, layout = wibox.layout.align.horizontal }, 1, 1), theme.batcolor),
+            wibox.container.background(wibox.container.margin(wibox.widget { bat_icon, bat_widget, bat.widget, layout = wibox.layout.align.horizontal }, 1, 1), theme.batcolor),
             arrow(theme.batcolor, "#f18e38"),
-            wibox.container.background(wibox.container.margin(wibox.widget {mytextclock, layout = wibox.layout.align.horizontal }, 1, 1), "#f18e38"),
+            wibox.container.background(wibox.container.margin(wibox.widget {clock_widget, layout = wibox.layout.align.horizontal }, 1, 1), "#f18e38"),
             arrow("#f18e38", "#232323"),
             s.mylayoutbox,
         },
