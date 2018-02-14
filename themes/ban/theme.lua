@@ -78,10 +78,10 @@ theme.widget_battery_empty                      = theme.dir .. "/icons/battery_e
 theme.widget_battery_no                         = theme.dir .. "/icons/battery_no.svg"
 
 theme.widget_mem                                = theme.dir .. "/icons/mem.png"
-theme.widget_cpu                                = theme.dir .. "/icons/cpu.png"
+theme.widget_cpu                                = theme.dir .. "/icons/cpu.svg"
 theme.widget_temp                               = theme.dir .. "/icons/temp.png"
 theme.widget_net                                = theme.dir .. "/icons/net.png"
-theme.widget_hdd                                = theme.dir .. "/icons/hdd.png"
+theme.widget_hdd                                = theme.dir .. "/icons/hdd.svg"
 theme.widget_clock                              = theme.dir .. "/icons/clock.png"
 theme.widget_music                              = theme.dir .. "/icons/note.png"
 theme.widget_music_on                           = theme.dir .. "/icons/note_on.png"
