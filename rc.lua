@@ -9,12 +9,10 @@ local beautiful     = require("beautiful")
 local naughty       = require("naughty")
 local lain          = require("lain")
 local scratch       = require("scratch")
---local menubar       = require("menubar")
 local freedesktop   = require("freedesktop")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
--- }}}
 
--- {{{ Error handling
+-- Error handling
 if awesome.startup_errors then
     naughty.notify({ preset = naughty.config.presets.critical,
                      title = "Oops, there were errors during startup!",
@@ -33,9 +31,8 @@ do
         in_error = false
     end)
 end
--- }}}
 
--- {{{ Autostart windowless processes
+-- Autostart windowless processes
 local function run_once(cmd_arr)
     for _, cmd in ipairs(cmd_arr) do
         findme = cmd
@@ -47,34 +44,27 @@ local function run_once(cmd_arr)
     end
 end
 
---run_once({ "unclutter -root" }) -- entries must be comma-separated
+-- Autostart programs
 run_once({ "kbdd" })
 run_once({ "nm-applet -sm-disable" })
 run_once({ "yeahconsole" })
 run_once({ "xautolock -time 10 -locker /home/ban/.config/scripts/lock.sh" })
 run_once({ "wmname LG3D" })
---run_once({ "telegram-desktop" })
-run_once({ "megasync" })
-run_once({ "yandex-disk-indicator" })
-run_once({ "dropbox" })
--- }}}
+-- run_once({ "megasync" })
+-- run_once({ "yandex-disk-indicator" })
+-- run_once({ "dropbox" })
 
--- {{{ Variable definitions
-
+-- Variable definitions
 local themes = {
-    "blackburn",       -- 1
-    "copland",         -- 2
-    "dremora",         -- 3
-    "holo",            -- 4
-    "multicolor",      -- 5
-    "powerarrow",      -- 6
-    "powerarrow-dark", -- 7
-    "rainbow",         -- 8
-    "steamburn",       -- 9
-    "vertex",          -- 10
+    "ban",      -- 1
 }
 
-local chosen_theme = themes[6]
+-- Choose the theme
+local chosen_theme = themes[1]
+-- Set false to disable titlebar
+local window_titlebar = true  
+-- Settings for dmenu prompt
+local dmenu_settings = "dmenu_run -fn 'Source Code Pro Regular-8' -i -l 10 -p 'Run:' -nb '#2d2d2d' -nf '#cccccc' -sb '#ff033e' -sf '#38000d'"
 local modkey       = "Mod4"
 local altkey       = "Mod1"
 local terminal     = "xterm"
@@ -82,7 +72,6 @@ local editor       = os.getenv("EDITOR") or "nano"
 local gui_editor   = "gvim"
 local browser      = "vivaldi-snapshot"
 local guieditor    = "subl3"
-local scrlocker    = "xlock"
 local translate_service = "google"
 
 -- Naughty presets
@@ -191,9 +180,9 @@ lain.layout.cascade.tile.ncol          = 2
 
 local theme_path = string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), chosen_theme)
 beautiful.init(theme_path)
--- }}}
 
--- {{{ Menu
+
+--  Menu
 local myawesomemenu = {
     { "hotkeys", function() return false, hotkeys_popup.show_help end },
     { "manual", terminal .. " -e man awesome" },
@@ -212,10 +201,8 @@ awful.util.mymainmenu = freedesktop.menu.build({
         -- other triads can be put here
     }
 })
---menubar.utils.terminal = terminal -- Set the Menubar terminal for applications that require it
--- }}}
 
--- {{{ Screen
+-- Screen
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", function(s)
     -- Wallpaper
@@ -230,15 +217,13 @@ screen.connect_signal("property::geometry", function(s)
 end)
 -- Create a wibox for each screen and add it
 awful.screen.connect_for_each_screen(function(s) beautiful.at_screen_connect(s) end)
--- }}}
 
--- {{{ Mouse bindings
+--  Mouse bindings
 root.buttons(awful.util.table.join(
     awful.button({ }, 3, function () awful.util.mymainmenu:toggle() end),
     awful.button({ }, 4, awful.tag.viewnext),
     awful.button({ }, 5, awful.tag.viewprev)
 ))
--- }}}
 
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
@@ -247,9 +232,9 @@ globalkeys = awful.util.table.join(
     --awful.key({ altkey }, "p", function() os.execute("screenshot") end,
     --          {description = "take a screenshot", group = "hotkeys"}),
 
-    -- X screen locker
-    awful.key({ altkey, "Control" }, "l", function () os.execute(scrlocker) end,
-              {description = "lock screen", group = "hotkeys"}),
+    -- -- X screen locker
+    -- awful.key({ altkey, "Control" }, "l", function () os.execute(scrlocker) end,
+    --           {description = "lock screen", group = "hotkeys"}),
 
     -- Hotkeys
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
@@ -638,9 +623,7 @@ clientbuttons = awful.util.table.join(
 
 -- Set keys
 root.keys(globalkeys)
--- }}}
 
--- {{{ Rules
 -- Rules to apply to new clients (through the "manage" signal).
 awful.rules.rules = {
     -- All clients will match this rule.
@@ -659,15 +642,16 @@ awful.rules.rules = {
 
     -- Titlebars
     { rule_any = { type = { "dialog", "normal" } },
-      properties = { titlebars_enabled = true } },
+      properties = { titlebars_enabled = window_titlebar } },
 
     -- Set Firefox to always map on the first tag on screen 1.
     { rule = { class = "Firefox" },
       properties = { screen = 1, switchtotag = true, tag = awful.util.tagnames[4] } },
     { rule = { class = "Subl3" },
       properties = { screen = 1, switchtotag = true, tag = awful.util.tagnames[1] } },
+    -- Caja is floating with fixed sizes. Titelbar enabled for Caja only
     { rule = { class = "Caja" },
-      properties = { floating = true, geometry = { x=200, y=150, height=600, width=1100 } } },
+      properties = { floating = true, titlebars_enabled = true, geometry = { x=200, y=150, height=600, width=1100 } } },
     { rule = { class = "Nm-connection-editor" },
       properties = { floating = true } },
     { rule = { class = "jetbrains-webstorm" },
@@ -695,9 +679,8 @@ awful.rules.rules = {
     { rule = { class = "Gimp", role = "gimp-image-window" },
       properties = { maximized = true } },
 }
--- }}}
 
--- {{{ Signals
+-- Signals
 -- Signal function to execute when a new client appears.
 client.connect_signal("manage", function (c)
     -- Set the windows at the slave,
@@ -780,4 +763,3 @@ client.connect_signal("focus",
         end
     end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
--- }}}
