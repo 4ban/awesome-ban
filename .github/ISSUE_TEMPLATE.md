@@ -1,4 +1,4 @@
-Output of `awesome --version`:
+Output of `awesome --version` and `lua -v`:
 
 _REPLACE with full version output_
 
@@ -13,3 +13,7 @@ _REPLACE with what happened_
 **Expected result:**
 
 _REPLACE with what should happen_
+
+**Screenshots:**
+
+_REPLACE with screenshots_

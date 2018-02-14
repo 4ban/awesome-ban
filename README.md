@@ -39,6 +39,25 @@ Additional default software used:
 
 `scrot mpd mpc dmenu xsel xlock i3lock kbdd`
 
+## Additional
+i3lock.
+`.config/lock.png` is a picture of a locker with transparent background.
+
+```
+$ touch ~/.config/scripts/lock.sh
+# chmod +x ~/.config/scripts/lock.sh
+```
+
+lock.sh:
+```
+#!/bin/bash
+ICON=$HOME/.config/lock.png
+TMPBG=/tmp/screen.png
+scrot /tmp/screen.png
+convert $TMPBG -scale 10% -scale 1000% $TMPBG
+convert $TMPBG $ICON -gravity center -composite -matte $TMPBG
+i3lock -u -i $TMPBG
+```
 
 ##### F.A.Q.
 

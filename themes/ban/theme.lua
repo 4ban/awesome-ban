@@ -218,13 +218,13 @@ local cpu = lain.widget.cpu({
 })
 
 -- Coretemp (lain, average)
+local tempicon = wibox.widget.imagebox(theme.widget_temp)
 local temp = lain.widget.temp({
     settings = function()
         widget:set_markup(markup.font(theme.font, markup.fg.color("#232323", " " .. coretemp_now .. "° ")))
     end
 })
 
-local tempicon = wibox.widget.imagebox(theme.widget_temp)
 
 -- fs
 local fsicon = wibox.widget.imagebox(theme.widget_hdd)
