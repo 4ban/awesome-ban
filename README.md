@@ -16,9 +16,15 @@ Inspired by [awesome-copycats](https://github.com/lcpz/awesome-copycats)
 ![](https://github.com/4ban/awesome-ban/raw/master/themes/ban/screenshots/screen3.png)
 ---
 
+![](https://github.com/4ban/awesome-ban/raw/master/themes/ban/screenshots/screen4.png)
+---
+
 ## Features
 
-Enable/Disable titlebar
+* Enable/Disable titlebar
+* Scratchpads which allow you hide/unhide windows
+* 
+* 
 
 ## Installation
 
@@ -37,18 +43,20 @@ GTK3 icon theme - `Paper`
 
 Additional default software used:
 
-`scrot mpd mpc dmenu xsel xlock i3lock kbdd`
+`scrot mpd mpc dmenu xsel nm-applet i3lock kbdd xautolock`
 
 ## Additional
-i3lock.
-`.config/lock.png` is a picture of a locker with transparent background.
+
+#### i3lock.
+
+Create a script as described below.
 
 ```
 $ touch ~/.config/scripts/lock.sh
 # chmod +x ~/.config/scripts/lock.sh
 ```
 
-lock.sh:
+File lock.sh:
 ```
 #!/bin/bash
 ICON=$HOME/.config/lock.png
@@ -58,6 +66,8 @@ convert $TMPBG -scale 10% -scale 1000% $TMPBG
 convert $TMPBG $ICON -gravity center -composite -matte $TMPBG
 i3lock -u -i $TMPBG
 ```
+
+`.config/lock.png` is a picture of a locker with transparent background.
 
 ##### F.A.Q.
 

@@ -6,7 +6,7 @@
 
 * Maybe the problem is solved in the current master branch already?
 
-  Simply clone awesome-pro with `git clone --recursive https://github.com/4ban/awesome-ban.git` or
+  Simply clone awesome-ban with `git clone --recursive https://github.com/4ban/awesome-ban.git` or
 
   download the git version via https://github.com/4ban/awesome-ban/archive/master.zip
 
@@ -16,6 +16,6 @@
 
 `Xephyr :5 -ac -br -noreset -screen 1500x800 & sleep 1; DISPLAY=:5 awesome -c /path/to/awesome-ban/rc.lua`. 
 
-Also change related paths in your rc.lua and theme.lua.
+Also change related paths in variables `theme_path` in your rc.lua and `theme.dir` in theme.lua.
 
 Thank you!
