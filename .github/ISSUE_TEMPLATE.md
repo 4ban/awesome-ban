@@ -1,19 +1,27 @@
+<!--- Provide a general summary of your issue in the Title above -->
+
+# Description
+
+<!--- Describe your issue in detail -->
+
+# How to reproduce the issue
+
+<!--- replace with step-by-step instructions on what to do -->
+
+# Actual result
+
+<!--- replace with what happened -->
+
+# Expected result
+
+<!--- replace it with what should happen -->
+
+# Information
+
 Output of `awesome --version` and `lua -v`:
 
-_REPLACE with full version output_
+<!--- Provide output here -->
 
-**How to reproduce the issue:**
+# Screenshots
 
-_REPLACE with step-by-step instructions on what to do_
-
-**Actual result:**
-
-_REPLACE with what happened_
-
-**Expected result:**
-
-_REPLACE with what should happen_
-
-**Screenshots:**
-
-_REPLACE with screenshots_
+<!--- Provide screenshots -->
