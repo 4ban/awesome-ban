@@ -21,21 +21,13 @@ Inspired by [awesome-copycats](https://github.com/lcpz/awesome-copycats)
 
 ## Features
 
-* Enable/Disable titlebar
-* Scratchpads which allow you hide/unhide windows
-* 
-* 
-
-## Installation
-
-`git clone --recursive https://github.com/4ban/awesome-ban.git`
-
-`mv -bv awesome-ban/* ~/.config/awesome; rm -rf awesome-ban`
-
-`cp ~/.config/awesome/rc.lua.default ~/.config/awesome/rc.lua`
+* Enable/Disable titlebar for all windows or selectively
+* Scratchpads which allow you hides window in the background (not minimized, just hidden) and invoke it whenever you need it on current tag (like yeahconsole, quake)
+* Autostart background programs
+* Custom layouts
 
 ## Requirements
-Complements are provided by [Lain](https://github.com/lcpz/lain) and [freedesktop](https://github.com/lcpz/freedesktop) and [scratch](https://github.com/proteansec/awesome-scratch).
+Complements are provided by [Lain](https://github.com/lcpz/lain), [freedesktop](https://github.com/lcpz/freedesktop) and [scratch](https://github.com/proteansec/awesome-scratch).
 
 Fonts are `Terminus, Tamzen, Meslo LGS and Tamsyn`
 
@@ -45,7 +37,25 @@ GTK3 icon theme - `Paper`
 
 Additional default software used:
 
-`scrot mpd mpc dmenu xsel nm-applet i3lock kbdd xautolock`
+`dmenu nm-applet xsel nm-applet i3lock kbdd xautolock`
+
+## Installation
+
+`git clone --recursive https://github.com/4ban/awesome-ban.git`
+
+`mv -bv awesome-ban/* ~/.config/awesome; rm -rf awesome-ban`
+
+`cp ~/.config/awesome/rc.lua.default ~/.config/awesome/rc.lua`
+
+## Usage
+
+First open your `rc.lua` in text editor and setup the configuration:
+
+* Define autostart programs
+* Set variables
+* Change default hotkeys
+* Setup layouts
+* Set windows rules
 
 ## Additional
 
