@@ -32,7 +32,7 @@ Inspired by [awesome-copycats](https://github.com/lcpz/awesome-copycats)
 
 `mv -bv awesome-ban/* ~/.config/awesome; rm -rf awesome-ban`
 
-`cp rc.lua.default rc.lua`
+`cp ~/.config/awesome/rc.lua.default ~/.config/awesome/rc.lua`
 
 ## Requirements
 Complements are provided by [Lain](https://github.com/lcpz/lain) and [freedesktop](https://github.com/lcpz/freedesktop) and [scratch](https://github.com/proteansec/awesome-scratch).
