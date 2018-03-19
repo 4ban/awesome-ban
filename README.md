@@ -37,7 +37,7 @@ GTK3 icon theme - `Paper`
 
 Additional default software used:
 
-`dmenu nm-applet xsel nm-applet i3lock kbdd xautolock`
+`dmenu2 nm-applet xsel nm-applet i3lock kbdd xautolock`
 
 ## Installation
 
