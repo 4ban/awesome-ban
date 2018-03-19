@@ -72,18 +72,18 @@ theme.layout_magnifier                          = theme.dir .. "/icons/layouts/m
 theme.layout_floating                           = theme.dir .. "/icons/layouts/floating.png"
 
 -- Widget icons
-theme.widget_ac                                 = theme.dir .. "/icons/ac.svg"
-theme.widget_battery                            = theme.dir .. "/icons/battery.svg"
-theme.widget_battery_medium                     = theme.dir .. "/icons/battery_medium.svg"
-theme.widget_battery_low                        = theme.dir .. "/icons/battery_low.svg"
-theme.widget_battery_empty                      = theme.dir .. "/icons/battery_empty.svg"
-theme.widget_battery_no                         = theme.dir .. "/icons/battery_no.svg"
+theme.widget_ac                                 = theme.dir .. "/icons/ac.png"
+theme.widget_battery                            = theme.dir .. "/icons/battery.png"
+theme.widget_battery_medium                     = theme.dir .. "/icons/battery_medium.png"
+theme.widget_battery_low                        = theme.dir .. "/icons/battery_low.png"
+theme.widget_battery_empty                      = theme.dir .. "/icons/battery_empty.png"
+theme.widget_battery_no                         = theme.dir .. "/icons/battery_no.png"
 
-theme.widget_mem                                = theme.dir .. "/icons/ram.png"
+theme.widget_mem                                = theme.dir .. "/icons/mem.png"
 theme.widget_cpu                                = theme.dir .. "/icons/cpu.png"
 theme.widget_temp                               = theme.dir .. "/icons/temp.png"
 theme.widget_net                                = theme.dir .. "/icons/net.png"
-theme.widget_hdd                                = theme.dir .. "/icons/hdd.png"
+theme.widget_hdd                                = theme.dir .. "/icons/ssd.png"
 theme.widget_clock                              = theme.dir .. "/icons/clock.png"
 theme.widget_music                              = theme.dir .. "/icons/note.png"
 theme.widget_music_on                           = theme.dir .. "/icons/note_on.png"
@@ -437,7 +437,7 @@ function theme.connect(s)
     --s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, awful.util.tasklist_buttons)
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s, height = 16, bg = theme.bg_normal, fg = theme.fg_normal })
+    s.mywibox = awful.wibar({ position = "top", screen = s, height = 17, bg = theme.bg_normal, fg = theme.fg_normal })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
@@ -447,7 +447,6 @@ function theme.connect(s)
             --spr,
             s.mytaglist,
             s.mypromptbox,
-            spr,
             wibox.container.background(wibox.container.margin(wibox.widget { chrome_button, layout = wibox.layout.align.horizontal }, 1, 1), theme.bg_normal),
             wibox.container.background(wibox.container.margin(wibox.widget { webstorm_button, layout = wibox.layout.align.horizontal }, 1, 1), theme.bg_normal),
             wibox.container.background(wibox.container.margin(wibox.widget { idea_button, layout = wibox.layout.align.horizontal }, 1, 1), theme.bg_normal),
