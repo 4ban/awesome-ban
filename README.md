@@ -7,16 +7,13 @@ Inspired by [awesome-copycats](https://github.com/lcpz/awesome-copycats)
 
 ## Gallery
 
-![](https://github.com/4ban/awesome-ban/raw/master/themes/ban/screenshots/screen1.png)
+![](https://github.com/4ban/awesome-ban/raw/master/themes/dark/screenshots/screen1.png)
 ---
 
-![](https://github.com/4ban/awesome-ban/raw/master/themes/ban/screenshots/screen2.png)
+![](https://github.com/4ban/awesome-ban/raw/master/themes/dark/screenshots/screen2.png)
 ---
 
-![](https://github.com/4ban/awesome-ban/raw/master/themes/ban/screenshots/screen3.png)
----
-
-![](https://github.com/4ban/awesome-ban/raw/master/themes/ban/screenshots/screen4.png)
+![](https://github.com/4ban/awesome-ban/raw/master/themes/dark/screenshots/screen3.png)
 ---
 
 ## Features
