@@ -7,13 +7,13 @@ Inspired by [awesome-copycats](https://github.com/lcpz/awesome-copycats)
 
 ## Gallery
 
-![](https://github.com/4ban/awesome-ban/raw/master/themes/dark/screenshots/screen1.png)
+![](https://github.com/4ban/awesome-ban/raw/master/themes/yellow/screenshots/screen1.png)
 ---
 
-![](https://github.com/4ban/awesome-ban/raw/master/themes/dark/screenshots/screen2.png)
+![](https://github.com/4ban/awesome-ban/raw/master/themes/yellow/screenshots/screen2.png)
 ---
 
-![](https://github.com/4ban/awesome-ban/raw/master/themes/dark/screenshots/screen3.png)
+![](https://github.com/4ban/awesome-ban/raw/master/themes/yellow/screenshots/screen3.png)
 ---
 
 ## Features
@@ -42,7 +42,7 @@ Additional default software used:
 
 `mv -bv awesome-ban/* ~/.config/awesome; rm -rf awesome-ban`
 
-`cp ~/.config/awesome/rc.lua.default ~/.config/awesome/rc.lua`
+`cp ~/.config/awesome/rc-default.lua ~/.config/awesome/rc.lua`
 
 ## Usage
 
