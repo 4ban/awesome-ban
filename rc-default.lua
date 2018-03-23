@@ -45,27 +45,27 @@ local function run_once(cmd_arr)
 end
 
 -- Autostart programs
-run_once({ "xterm" })
+run_once({ "kbdd" })
+run_once({ "nm-applet -sm-disable" })
 run_once({ "wmname LG3D" }) -- Fix for java applications
 
 -- Variable definitions
 local themes = {
-    "dark",      -- 1
-    "violet", -- 2
+    "yellow",      -- 1
+    "darkblue"     -- 2
 }
 -- Choose the theme
-local chosen_theme = themes[1]
+local chosen_theme = themes[2]
 -- Set false to disable titlebar
 local window_titlebar = true  
 -- Settings for dmenu prompt
-local dmenu_settings = "dmenu_run -fn 'Meslo LGS Regular-8' -i -l 10 -p 'Run:' -nb '#312347' -nf '#DA857C' -sb '#9a37a1' -sf '#2d2d2d' -h 10 -w 800 -y 350 -x 400"
-
+local dmenu_settings = "dmenu_run -fn 'Meslo LGS Regular-10' -i -l 10 -p 'Run:' -nb '#32302f' -nf '#a89984' -sb '#458588' -sf '#2d2d2d' -h 10 -w 800 -y 350 -x 400"
 local modkey       = "Mod4"
 local altkey       = "Mod1"
-local terminal     = "xterm"
+local terminal     = "urxvt"
 local editor       = os.getenv("EDITOR") or "nano"
 local gui_editor   = "gvim"
-local browser      = "vivaldi-snapshot"
+local browser      = "firefox"
 local guieditor    = "subl3"
 
 -- Naughty presets
@@ -93,10 +93,10 @@ awful.layout.layouts = {
     lain.layout.centerwork,
     awful.layout.suit.spiral,
     awful.layout.suit.magnifier,
+    awful.layout.suit.fair,
     --awful.layout.suit.tile.bottom,
     --awful.layout.suit.tile.left,
     --awful.layout.suit.tile.top,
-    --awful.layout.suit.fair,
     --awful.layout.suit.fair.horizontal,
     --awful.layout.suit.spiral.dwindle,
     --awful.layout.suit.max.fullscreen,
@@ -341,15 +341,15 @@ globalkeys = awful.util.table.join(
     awful.key({                   }, "XF86Launch1", function()  awful.util.spawn("subl3") end),
     awful.key({ modkey            }, "v", function() awful.util.spawn_with_shell("vivaldi-snapshot") end ),
     awful.key({ modkey            }, "t", function() awful.util.spawn_with_shell("caja") end ),
-    awful.key({ modkey            }, "r", function() awful.util.spawn('xterm -e ranger') end ),
+    awful.key({ modkey            }, "r", function() awful.util.spawn('urxvt -e ranger') end ),
     awful.key({                   }, "F11", function() awful.util.spawn('qpaeq') end ),
     awful.key({ modkey            }, "l", function() awful.util.spawn_with_shell("~/.config/scripts/lock.sh") end),
     awful.key({                   }, "Print", function() awful.util.spawn("scrot -e 'mv %f ~/screenshots/'") end),
     --awful.key({ }, "F4", function () scratch.drop("weechat", "bottom", "left", 0.60, 0.60, true, mouse.screen) end),
     --awful.key({ }, "F6", function () scratch.drop("smuxi-frontend-gnome", "bottom", "left", 0.60, 0.60, true, mouse.screen) end),
     awful.key({ }, "F2", function () scratch.drop("telegram-desktop", "bottom", "right", 0.50, 0.60, true, mouse.screen) end),
-    awful.key({ }, "F3", function () scratch.drop("xterm -e ranger", "center", "center", 0.75, 0.7, true, mouse.screen) end),
-    awful.key({ }, "F12", function () awful.util.spawn("/home/ban/.config/scripts/translate_new.sh \"".. translate_service.. "\"",false) end),
+    awful.key({ }, "F3", function () scratch.drop("urxvt -e ranger", "center", "center", 0.75, 0.7, true, mouse.screen) end),
+    awful.key({ }, "F12", function () awful.util.spawn_with_shell("~/.config/scripts/translate_new.sh \"".. translate_service.. "\"",false) end),
     -- Standard program
     awful.key({ modkey,           }, "x", function () awful.spawn(terminal) end,
               {description = "open a terminal", group = "launcher"}),
@@ -638,33 +638,39 @@ awful.rules.rules = {
     { rule_any = { type = { "dialog", "normal" } },
       properties = { titlebars_enabled = window_titlebar } },
 
-    -- Set Firefox to always map on the first tag on screen 1.
+   -- Set Firefox to always map on the first tag on screen 1.
     { rule = { class = "Firefox" },
-      properties = { screen = 1, switchtotag = true, tag = awful.util.tagnames[4] } },
+      properties = { screen = 1, maximized = true, switchtotag = true, tag = awful.util.tagnames[4] } },
+    { rule = { class = "Opera" },
+      properties = { screen = 1, maximized = true, switchtotag = true, tag = awful.util.tagnames[4] } },
     { rule = { class = "Subl3" },
       properties = { screen = 1, switchtotag = true, tag = awful.util.tagnames[1] } },
-    -- Caja is floating with fixed sizes. Titelbar enabled for Caja only
+    { rule = { class = "mpv" },
+      properties = { maximized = true } },
+    -- Caja is floating with fixed sizes. Titelbar enabled for Caja
     { rule = { class = "Caja" },
       properties = { floating = true, titlebars_enabled = true, geometry = { x=200, y=150, height=600, width=1100 } } },
     { rule = { class = "Nm-connection-editor" },
       properties = { floating = true } },
+    { rule = { class = "Tilda"},
+      properties = { floating = true, below = true } },
     { rule = { class = "jetbrains-webstorm" },
-      properties = { screen = 1, tag = awful.util.tagnames[2] } },
+      properties = { screen = 1, maximized = true, tag = awful.util.tagnames[2] } },
     { rule = { class = "jetbrains-idea" },
-      properties = { screen = 1, tag = awful.util.tagnames[2] } },
+      properties = { screen = 1, maximized = true, tag = awful.util.tagnames[2] } },
     { rule = { class = "jetbrains-pycharm" },
-      properties = { screen = 1, tag = awful.util.tagnames[2] } },
+      properties = { screen = 1, maximized = true, tag = awful.util.tagnames[2] } },
     -- Disable titelbar for browsers
     { rule = { class = "Vivaldi-stable" },
-      properties = { screen = 1, titlebars_enabled = false, switchtotag = true, tag = awful.util.tagnames[3] } },
+      properties = { screen = 1, maximized = true, titlebars_enabled = false, switchtotag = true, tag = awful.util.tagnames[3] } },
     { rule = { class = "Vivaldi-snapshot" },
-      properties = { screen = 1, titlebars_enabled = false, switchtotag = true, tag = awful.util.tagnames[3] } },
+      properties = { screen = 1, maximized = true, titlebars_enabled = false, switchtotag = true, tag = awful.util.tagnames[3] } },
     { rule = { class = "Google-chrome" },
-      properties = { screen = 1, titlebars_enabled = false, switchtotag = true, tag = awful.util.tagnames[4] } },
+      properties = { screen = 1, maximized = true, titlebars_enabled = false, switchtotag = true, tag = awful.util.tagnames[4] } },
     { rule = { class = "Google-chrome-unstable" },
-      properties = { screen = 1, titlebars_enabled = false, tag = awful.util.tagnames[5] } },
+      properties = { screen = 1, maximized = true, titlebars_enabled = false, tag = awful.util.tagnames[5] } },
     { rule = { class = "Transmission-gtk" },
-      properties = { screen = 1, switchtotag = true, tag = awful.util.tagnames[6] } },
+      properties = { screen = 1, maximized = true, switchtotag = true, tag = awful.util.tagnames[6] } },
     { rule = { instance = "plugin-container" },
       properties = { floating = true } },
     { rule = { instance = "exe" },
@@ -713,25 +719,25 @@ client.connect_signal("request::titlebars", function(c)
         end)
     )
 
-    awful.titlebar(c, {size = 16}) : setup {
+    awful.titlebar(c, {size = 18}) : setup {
         { -- Left
-            awful.titlebar.widget.iconwidget(c),
+            --awful.titlebar.widget.iconwidget(c),
             buttons = buttons,
             layout  = wibox.layout.fixed.horizontal
         },
         { -- Middle
-            { -- Title
-                align  = "center",
-                widget = awful.titlebar.widget.titlewidget(c)
-            },
+            -- { -- Title
+            --     align  = "center",
+            --     widget = awful.titlebar.widget.titlewidget(c)
+            -- },
             buttons = buttons,
             layout  = wibox.layout.flex.horizontal
         },
         { -- Right
             awful.titlebar.widget.floatingbutton (c),
-            awful.titlebar.widget.maximizedbutton(c),
             awful.titlebar.widget.stickybutton   (c),
             awful.titlebar.widget.ontopbutton    (c),
+            awful.titlebar.widget.maximizedbutton(c),
             awful.titlebar.widget.closebutton    (c),
             layout = wibox.layout.fixed.horizontal()
         },
