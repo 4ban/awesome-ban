@@ -193,6 +193,21 @@ ywr = wibox.widget.imagebox(theme.ywr)
 ywl = wibox.widget.imagebox(theme.ywl)
 ywc = wibox.widget.imagebox(theme.ywc)
 
+rwd = wibox.widget.imagebox(theme.rwd)
+rwr = wibox.widget.imagebox(theme.rwr)
+rwl = wibox.widget.imagebox(theme.rwl)
+rwc = wibox.widget.imagebox(theme.rwc)
+
+gwd = wibox.widget.imagebox(theme.gwd)
+gwr = wibox.widget.imagebox(theme.gwr)
+gwl = wibox.widget.imagebox(theme.gwl)
+gwc = wibox.widget.imagebox(theme.gwc)
+
+bwd = wibox.widget.imagebox(theme.bwd)
+bwr = wibox.widget.imagebox(theme.bwr)
+bwl = wibox.widget.imagebox(theme.bwl)
+bwc = wibox.widget.imagebox(theme.bwc)
+
 -- Widgets
 local clock_icon = wibox.widget.imagebox(theme.widget_clock)
 local clock = awful.widget.textclock("<span font=\"Meslo LGS Regular 10\" color=\"#32302f\"> %a %d %b  %H:%M </span>")
@@ -248,7 +263,7 @@ local bat = lain.widget.bat({
             elseif tonumber(bat_now.perc) <= 80 then
                 bat_icon:set_image(theme.widget_battery_medium)
                 widget:set_markup(markup.font(theme.font, markup.fg.color("#232323", " -" .. bat_now.perc .. "% [" .. bat_now.watt .. "W][" .. bat_now.time .. "]")))
-            elseif tonumber(bat_now.perc) <= 99 then
+            elseif tonumber(bat_now.perc) <= 90 then
                 bat_icon:set_image(theme.widget_battery)
                 widget:set_markup(markup.font(theme.font, markup.fg.color("#232323", " -" .. bat_now.perc .. "% [" .. bat_now.watt .. "W][" .. bat_now.time .. "]")))
             else
@@ -281,17 +296,17 @@ local batupd = lain.widget.bat({
     settings = function()
         if bat_now.status ~= "N/A" then
             if bat_now.status == "Charging" then
-                batbar:set_color("#428bca")
+                batbar:set_color(theme.blue)
             elseif bat_now.status == "Full" then
-                batbar:set_color("#777ace")
+                batbar:set_color(theme.violet)
             elseif tonumber(bat_now.perc) <= 35 then
-                batbar:set_color("#e35d6a")
+                batbar:set_color(theme.red)
             elseif tonumber(bat_now.perc) <= 80 then
-                batbar:set_color("#ffbf00")
-            elseif tonumber(bat_now.perc) <= 99 then
-                batbar:set_color("#5cb85c")
+                batbar:set_color(theme.yellow)
+            elseif tonumber(bat_now.perc) <= 90 then
+                batbar:set_color(theme.green)
             else
-                batbar:set_color("#5cb85c")
+                batbar:set_color(theme.blue)
             end
             batbar:set_value(bat_now.perc / 100)
         else
