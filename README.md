@@ -7,6 +7,8 @@ Inspired by [awesome-copycats](https://github.com/lcpz/awesome-copycats)
 
 ## Gallery
 
+### yellow theme
+
 ![](https://github.com/4ban/awesome-ban/raw/master/themes/yellow/screenshots/screen1.png)
 ---
 
@@ -14,6 +16,17 @@ Inspired by [awesome-copycats](https://github.com/lcpz/awesome-copycats)
 ---
 
 ![](https://github.com/4ban/awesome-ban/raw/master/themes/yellow/screenshots/screen3.png)
+---
+
+### darkblue theme
+
+![](https://github.com/4ban/awesome-ban/raw/master/themes/darkblue/screenshots/screen1.png)
+---
+
+![](https://github.com/4ban/awesome-ban/raw/master/themes/darkblue/screenshots/screen2.png)
+---
+
+![](https://github.com/4ban/awesome-ban/raw/master/themes/darkblue/screenshots/screen3.png)
 ---
 
 ## Features

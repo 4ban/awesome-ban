@@ -5,41 +5,47 @@ local wibox = require("wibox")
 local os, math, string = os, math, string
 
 local theme                                     = {}
-theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/violet"
+theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/darkblue"
 theme.wallpaper                                 = theme.dir .. "/wallpapers/wall_0.png"
 theme.font                                      = "Meslo LGS Regular 10"
 theme.taglist_font                              = "Meslo LGS Bold 10"
 theme.tasklist_font                             = "Terminus 10"
 
-theme.fg_normal                                 = "#d5a3ec"
-theme.fg_focus                                  = "#428bca"
-theme.fg_urgent                                 = "#C83F11"
-theme.bg_normal                                 = "#312347"
-theme.bg_focus                                  = "#b873bd"
-theme.bg_urgent                                 = "#3F3F3F"
+theme.bg_normal                                 = "#32302f"
+theme.fg_normal                                 = "#a89984"
+--theme.bg_focus                                  = "#b873bd"
+--theme.fg_focus                                  = "#458588"
+theme.bg_urgent                                 = "#C92132"
+theme.fg_urgent                                 = "#282828"
 
-theme.taglist_bg_focus                          = "#b873bd"
-theme.taglist_fg_focus                          = "#130e1c"
-theme.taglist_fg_empty                          = "#d57cf4"
-theme.taglist_bg_occupied                       = "#6b2670"
-theme.taglist_fg_occupied                       = "#130e1c"
-theme.taglist_bg_urgent                         = "#f8173e"
-theme.taglist_fg_urgent                         = "#232323"
+theme.fg_widget                                 = "#32302f"
 
-theme.tasklist_bg_focus                         = "#312347"
-theme.tasklist_fg_normal                        = "#888888"
-theme.tasklist_fg_focus                         = "#e4e4e4"
-theme.tasklist_bg_urgent                        = "#f8173e"
+theme.taglist_bg_focus                          = "#4e9699" 
+theme.taglist_fg_focus                          = "#282828"
+theme.taglist_bg_occupied                       = "#2b5355"
+theme.taglist_fg_occupied                       = "#282828"
+theme.taglist_bg_empty                          = "#32302f"
+theme.taglist_fg_empty                          = "#ebdbb2"
+theme.taglist_bg_urgent                         = "#C92132"
+theme.taglist_fg_urgent                         = "#282828"
+
+theme.tasklist_bg_normal                        = "#32302f"
+theme.tasklist_fg_normal                        = "#ebdbb2"
+theme.tasklist_bg_focus                         = "#32302f"
+theme.tasklist_fg_focus                         = "#ebdbb2"
+theme.tasklist_bg_urgent                        = "#C92132"
+theme.tasklist_fg_urgent                        = "#32302f"
 
 theme.border_width                              = 0
-theme.border_normal                             = "#d57cf4"
-theme.border_focus                              = "#d57cf4"
+theme.border_normal                             = "#32302f"
+theme.border_focus                              = "#3f3f3f"
 theme.border_marked                             = "#CC9393"
 
-theme.titlebar_bg_normal                        = "#312347"
-theme.titlebar_bg_focus                         = "#6b2670"
-theme.titlebar_fg_normal                        = "#d5a3ec"
-theme.titlebar_fg_focus                         = "#130e1c"
+theme.titlebar_bg_normal                        = "#2b5355"
+theme.titlebar_fg_normal                        = "#282828"
+
+theme.titlebar_bg_focus                         = "#4e9699"
+theme.titlebar_fg_focus                         = "#282828"
 
 theme.menu_height                               = 16
 theme.menu_width                                = 140
@@ -100,7 +106,7 @@ theme.widget_vol_mute                           = theme.dir .. "/icons/widgets/v
 
 theme.tasklist_plain_task_name                  = true
 theme.tasklist_disable_icon                     = true
-theme.useless_gap                               = 0
+theme.useless_gap                               = 7
 
 theme.titlebar_close_button_focus               = theme.dir .. "/icons/titlebar/close_focus.png"
 theme.titlebar_close_button_normal              = theme.dir .. "/icons/titlebar/close_normal.png"
@@ -137,34 +143,61 @@ theme.pycharm                                   = theme.dir .. "/icons/apps/pych
 theme.teamviewer                                = theme.dir .. "/icons/apps/teamviewer.png"
 theme.vivaldi                                   = theme.dir .. "/icons/apps/vivaldi.png"
 
+-- colors
+theme.green          = "#00b159"
+theme.red            = "#d64d4d"
+theme.yellow         = "#cc9c00"
+theme.blue           = "#428bca"
+theme.darkred        = "#c92132"
+theme.darkgreen      = "#4d7358"
+theme.darkyellow     = "#f18e38" 
+theme.gray           = "#5e5e5e"
+theme.violet         = "#8c8ccd"
+theme.pink           = "#B85C8A"
+
 -- Panel
+local markup = lain.util.markup
+
 theme.vwd = theme.dir .. "/icons/display/violet/wd.png"
 theme.vwr = theme.dir .. "/icons/display/violet/wr.png"
 theme.vwl = theme.dir .. "/icons/display/violet/wl.png"
 theme.vwc = theme.dir .. "/icons/display/violet/wc.png"
 
+theme.ywd = theme.dir .. "/icons/display/yellow/wd.png"
+theme.ywr = theme.dir .. "/icons/display/yellow/wr.png"
+theme.ywl = theme.dir .. "/icons/display/yellow/wl.png"
+theme.ywc = theme.dir .. "/icons/display/yellow/wc.png"
 
-theme.spr    = theme.dir .. "/icons/separators/spr.png"
-theme.spr5px = theme.dir .. "/icons/separators/spr5px.png"
+theme.rwd = theme.dir .. "/icons/display/red/wd.png"
+theme.rwr = theme.dir .. "/icons/display/red/wr.png"
+theme.rwl = theme.dir .. "/icons/display/red/wl.png"
+theme.rwc = theme.dir .. "/icons/display/red/wc.png"
 
-local markup = lain.util.markup
-space3 = markup.font("Meslo LGS Regular-10", " ")
-spr = wibox.widget.imagebox(theme.spr)
-spr5px = wibox.widget.imagebox(theme.spr5px)
+theme.gwd = theme.dir .. "/icons/display/green/wd.png"
+theme.gwr = theme.dir .. "/icons/display/green/wr.png"
+theme.gwl = theme.dir .. "/icons/display/green/wl.png"
+theme.gwc = theme.dir .. "/icons/display/green/wc.png"
+
+theme.bwd = theme.dir .. "/icons/display/blue/wd.png"
+theme.bwr = theme.dir .. "/icons/display/blue/wr.png"
+theme.bwl = theme.dir .. "/icons/display/blue/wl.png"
+theme.bwc = theme.dir .. "/icons/display/blue/wc.png"
 
 vwd = wibox.widget.imagebox(theme.vwd)
 vwr = wibox.widget.imagebox(theme.vwr)
 vwl = wibox.widget.imagebox(theme.vwl)
 vwc = wibox.widget.imagebox(theme.vwc)
+
+ywd = wibox.widget.imagebox(theme.ywd)
+ywr = wibox.widget.imagebox(theme.ywr)
+ywl = wibox.widget.imagebox(theme.ywl)
+ywc = wibox.widget.imagebox(theme.ywc)
+
 -- Widgets
+local clock_icon = wibox.widget.imagebox(theme.widget_clock)
+local clock = awful.widget.textclock("<span font=\"Meslo LGS Regular 10\" color=\"#32302f\"> %a %d %b  %H:%M </span>")
+local clock_widget = wibox.container.background(wibox.container.margin(wibox.widget {clock_icon, clock, layout = wibox.layout.align.horizontal }, 1, 1), theme.violet)
 
-local clock_ic = wibox.widget.imagebox(theme.widget_clock)
-local clock = awful.widget.textclock("<span font=\"Meslo LGS Regular 10\"> %a %d %b  %H:%M</span>")
-
-local clock_widget = wibox.container.background(clock)
-local clock_icon = wibox.container.background(clock_ic)
-clock_widget.bgimage = theme.vwd
-clock_icon.bgimage = theme.vwd
 -- Calendar
 local calendar = lain.widget.calendar({
     cal = "cal --color=always",
@@ -189,14 +222,14 @@ local bat = lain.widget.bat({
             text = "Plug the cable!",
             timeout = 15,
             fg = "#232323",
-            bg = "#ffbf00"
+            bg = "#f18e38"
         }
         bat_notification_critical_preset = {
             title = "Battery exhausted",
             text = "Shutdown imminent",
             timeout = 15,
             fg = "#232323",
-            bg = "#e35d6a"
+            bg = "#c92132"
         }
 
         if bat_now.status ~= "N/A" then
@@ -211,7 +244,7 @@ local bat = lain.widget.bat({
                 widget:set_markup(markup.font(theme.font, markup.fg.color("#232323", " -" .. bat_now.perc .. "% [" .. bat_now.watt .. "W][" .. bat_now.time .. "]")))
             elseif tonumber(bat_now.perc) <= 60 then
                 bat_icon:set_image(theme.widget_battery_low)
-                widget:set_markup(markup.font(theme.font, markup.fg.color("#232323", " -" .. bat_now.perc .. "% [" .. bat_now.watt .. "W][" .. bat_now.time .. "]")))
+                widget:set_markup(markup.font(theme.font, markup.fg.color("#232323", " -" .. bat_now.perc .. "% [" .. bat_now.watt .. "W][" .. bat_now.time .. "]")))         
             elseif tonumber(bat_now.perc) <= 80 then
                 bat_icon:set_image(theme.widget_battery_medium)
                 widget:set_markup(markup.font(theme.font, markup.fg.color("#232323", " -" .. bat_now.perc .. "% [" .. bat_now.watt .. "W][" .. bat_now.time .. "]")))
@@ -268,82 +301,74 @@ local batupd = lain.widget.bat({
 })
 local batbg = wibox.container.background(batbar, "#474747", gears.shape.rectangle)
 local bat_widget = wibox.container.margin(batbg, 2, 7, 4, 4)
-bat_widget.bgimage = theme.vwd
+
+local battery_widget = wibox.container.background(wibox.container.margin(wibox.widget { bat_icon, bat_widget, bat.widget, layout = wibox.layout.align.horizontal }, 1, 1), theme.gray)
 
 -- MEM
-local mem_ic = wibox.widget.imagebox(theme.widget_mem)
+local mem_icon = wibox.widget.imagebox(theme.widget_mem)
 local mem = lain.widget.mem({
     settings = function()
-        widget:set_markup(space3 .. mem_now.used .. " MB [" .. mem_now.perc .. "%]")
+        widget:set_markup(markup.font(theme.font, markup.fg.color(theme.fg_widget, " " .. mem_now.used .. "MB [" .. mem_now.perc .. "%]")))
     end
 })
-local mem_widget = wibox.container.background(mem.widget)
-mem_widget.bgimage=theme.vwd
-local mem_icon = wibox.container.background(mem_ic)
-mem_icon.bgimage=theme.vwd
+local mem_widget =  wibox.container.background(wibox.container.margin(wibox.widget { mem_icon, mem.widget, layout = wibox.layout.align.horizontal }, 1, 1), theme.pink)
+
 
 -- CPU
-local cpu_ic = wibox.widget.imagebox(theme.widget_cpu)
+local cpu_icon = wibox.widget.imagebox(theme.widget_cpu)
 local cpu = lain.widget.cpu({
     settings = function()
-        widget:set_markup(space3 .. cpu_now.usage .. "%")
+        widget:set_markup(markup.font(theme.font, markup.fg.color(theme.fg_widget, " " .. cpu_now.usage .. "% ")))
     end
 })
-local cpu_widget = wibox.container.background(cpu.widget)
-cpu_widget.bgimage=theme.vwd
-local cpu_icon = wibox.container.background(cpu_ic)
-cpu_icon.bgimage=theme.vwd
+local cpu_widget =  wibox.container.background(wibox.container.margin(wibox.widget { cpu_icon, cpu.widget, layout = wibox.layout.align.horizontal }, 1, 1), theme.blue)
+
 
 -- Coretemp (lain, average)
-local temp_ic = wibox.widget.imagebox(theme.widget_temp)
+local temp_icon = wibox.widget.imagebox(theme.widget_temp)
 local temp = lain.widget.temp({
     settings = function()
-        widget:set_markup(space3 .. coretemp_now .. "° ")
+        widget:set_markup(markup.font(theme.font, markup.fg.color(theme.fg_widget, "" .. coretemp_now .. "° ")))
     end
 })
-local temp_widget = wibox.container.background(temp.widget)
-temp_widget.bgimage=theme.vwd
-local temp_icon = wibox.container.background(temp_ic)
-temp_icon.bgimage=theme.vwd
+local temp_widget =  wibox.container.background(wibox.container.margin(wibox.widget { temp_icon, temp.widget, layout = wibox.layout.align.horizontal }, 1, 1), theme.red)
+
 
 -- FS
-local fs_ic = wibox.widget.imagebox(theme.widget_hdd)
+local fs_icon = wibox.widget.imagebox(theme.widget_hdd)
 local fs = lain.widget.fs({
     notification_preset = { fg = theme.fg_normal, bg = theme.bg_normal, font = theme.fs_font },
     settings = function()
         local fsp = string.format(" %3.2f %s ", fs_now["/home"].free, fs_now["/home"].units)
-        widget:set_markup(markup.font(theme.font, fsp))
+        widget:set_markup(markup.font(theme.font, markup.fg.color(theme.fg_widget, fsp)))
     end
 })
-local fs_widget = wibox.container.background(fs.widget)
-fs_widget.bgimage=theme.vwd   
-local fs_icon = wibox.container.background(fs_ic)
-fs_icon.bgimage=theme.vwd      
+local fs_widget =  wibox.container.background(wibox.container.margin(wibox.widget { fs_icon, fs.widget, layout = wibox.layout.align.horizontal }, 1, 1), theme.yellow)
 
 -- ALSA volume bar
-local vol_ic = wibox.widget.imagebox(theme.widget_vol)
+local vol_icon = wibox.widget.imagebox(theme.widget_vol)
 theme.volume = lain.widget.alsabar({
     width = 45, border_width = 0, ticks = true, ticks_size = 5,
     notification_preset = { font = theme.font },
     --togglechannel = "IEC958,3",
     settings = function()
         if volume_now.status == "off" then
-            vol_ic:set_image(theme.widget_vol_mute)
+            vol_icon:set_image(theme.widget_vol_mute)
         elseif volume_now.level == 0 then
-            vol_ic:set_image(theme.widget_vol_no)
+            vol_icon:set_image(theme.widget_vol_no)
         elseif volume_now.level <= 50 then
-            vol_ic:set_image(theme.widget_vol_low)
+            vol_icon:set_image(theme.widget_vol_low)
         else
-            vol_ic:set_image(theme.widget_vol)
+            vol_icon:set_image(theme.widget_vol)
         end
     end,
     colors = {
-        background   = "#232323",
+        background   = theme.bg_normal,
         mute         = red,
         unmute       = "#5cb85c"
     }
 })
-theme.volume.tooltip.wibox.fg = "#232323"
+theme.volume.tooltip.wibox.fg = theme.fg_widget
 theme.volume.bar:buttons(awful.util.table.join (
           awful.button({}, 1, function()
             awful.spawn.with_shell(string.format("%s -e alsamixer", awful.util.terminal))
@@ -366,17 +391,15 @@ theme.volume.bar:buttons(awful.util.table.join (
           end)
 ))
 local volumebg = wibox.container.background(theme.volume.bar, "#888888", gears.shape.rectangle)
-local volume_widget = wibox.container.margin(volumebg, 2, 7, 4, 4)
-volume_widget.bgimage=theme.vwd
-local vol_icon = wibox.container.background(vol_ic)
-vol_icon.bgimage=theme.vwd
+local vol_widget = wibox.container.margin(volumebg, 2, 7, 4, 4)
+local volume_widget = wibox.container.background(wibox.container.margin(wibox.widget { vol_icon, vol_widget, layout = wibox.layout.align.horizontal }, 1, 1), theme.blue)
 
 -- Keyboard layout switcher
 kbdwidget = wibox.widget.textbox()
 kbdwidget.border_width = 1
 kbdwidget.border_color = theme.bg_normal
 kbdwidget.font = theme.font
-kbdwidget:set_markup("<span foreground=".."'"..theme.fg_normal.."'".."> Eng </span>")
+kbdwidget:set_markup("<span foreground=".."'"..theme.fg_widget.."'".."> Eng </span>")
 
 kbdstrings = {[0] = " Eng ",
               [1] = " Rus "}
@@ -386,11 +409,10 @@ dbus.add_match("session", "interface='ru.gentoo.kbdd',member='layoutChanged'")
 dbus.connect_signal("ru.gentoo.kbdd", function(...)
     local data = {...}
     local layout = data[2]
-    kbdwidget:set_markup("<span foreground=".."'"..theme.fg_normal.."'"..">" .. kbdstrings[layout] .. "</span>")
+    kbdwidget:set_markup("<span foreground=".."'"..theme.fg_widget.."'"..">" .. kbdstrings[layout] .. "</span>")
     end
 )
-local kbd_widget = wibox.container.background(kbdwidget)
-kbd_widget.bgimage=theme.vwd
+local kbd_widget = wibox.container.background(wibox.container.margin(wibox.widget { kbdwidget, layout = wibox.layout.align.horizontal }, 1, 1), theme.green)
 
 -- Chrome_button
 local chrome_button = awful.widget.button({ image = theme.chrome })
@@ -456,7 +478,7 @@ function theme.connect(s)
     --s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, awful.util.tasklist_buttons)
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s, height = 17, bg = theme.bg_normal, fg = theme.fg_normal })
+    s.mywibox = awful.wibar({ position = "top", screen = s, height = 16, bg = theme.bg_normal, fg = theme.fg_normal })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
@@ -478,36 +500,28 @@ function theme.connect(s)
             layout = wibox.layout.fixed.horizontal,
             wibox.widget.systray(),
             -- Keyboard
-            vwl,
+            --vwl,
             kbd_widget,
             -- Volume
-            vwc,
-            vol_icon,
+            --vwc,
             volume_widget,
             -- Fs widget
-            vwc,
-            fs_icon,
+            --vwc,
             fs_widget,
             -- Temp
-            vwc,
-            temp_icon,
+            --vwc,
             temp_widget,
             -- CPU widget
-            vwc,
-            cpu_icon,
+            --vwc,
             cpu_widget,
             -- Mem widget
-            vwc,
-            mem_icon,
+            --vwc,
             mem_widget,
             -- Battery widget
-            vwc,
-            bat_icon,
-            bat_widget,
-            bat.widget,
+            --vwc,
+            battery_widget,
             -- Clock
-            vwc,
-            clock_icon,
+            --vwc,
             clock_widget,
             -- Layout box
             s.mylayoutbox,
