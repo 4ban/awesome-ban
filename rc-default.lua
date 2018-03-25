@@ -48,7 +48,7 @@ end
 run_once({ "kbdd" })
 run_once({ "nm-applet -sm-disable" })
 run_once({ "wmname LG3D" }) -- Fix for java applications
-
+run_once({ "xautolock -time 10 -locker i3lock-fancy -f Meslo-LG-S-Regular -t 'Locked' -n --" })
 -- Variable definitions
 local themes = {
     "yellow",      -- 1
@@ -60,6 +60,7 @@ local chosen_theme = themes[2]
 local window_titlebar = true  
 -- Settings for dmenu prompt
 local dmenu_settings = "dmenu_run -fn 'Meslo LGS Regular-10' -i -l 10 -p 'Run:' -nb '#32302f' -nf '#a89984' -sb '#458588' -sf '#2d2d2d' -h 10 -w 800 -y 350 -x 400"
+local i3lock_settings = "i3lock-fancy -f Meslo-LG-S-Regular -t 'Locked' -n --"
 local modkey       = "Mod4"
 local altkey       = "Mod1"
 local terminal     = "urxvt"
@@ -343,7 +344,8 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey            }, "t", function() awful.util.spawn_with_shell("caja") end ),
     awful.key({ modkey            }, "r", function() awful.util.spawn('urxvt -e ranger') end ),
     awful.key({                   }, "F11", function() awful.util.spawn('qpaeq') end ),
-    awful.key({ modkey            }, "l", function() awful.util.spawn_with_shell("~/.config/scripts/lock.sh") end),
+    --awful.key({ modkey            }, "l", function() awful.util.spawn_with_shell("~/.config/scripts/lock.sh") end),
+    awful.key({ modkey            }, "l", function() awful.util.spawn(i3lock_settings) end),
     awful.key({                   }, "Print", function() awful.util.spawn("scrot -e 'mv %f ~/screenshots/'") end),
     --awful.key({ }, "F4", function () scratch.drop("weechat", "bottom", "left", 0.60, 0.60, true, mouse.screen) end),
     --awful.key({ }, "F6", function () scratch.drop("smuxi-frontend-gnome", "bottom", "left", 0.60, 0.60, true, mouse.screen) end),
