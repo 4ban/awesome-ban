@@ -7,16 +7,32 @@ Inspired by [awesome-copycats](https://github.com/lcpz/awesome-copycats)
 
 ## Gallery
 
-![](https://github.com/4ban/awesome-ban/raw/master/themes/ban/screenshots/screen1.png)
+### darkblue theme
+
+![](https://github.com/4ban/awesome-ban/raw/master/themes/darkblue/screenshots/screen1.png)
 ---
 
-![](https://github.com/4ban/awesome-ban/raw/master/themes/ban/screenshots/screen2.png)
+![](https://github.com/4ban/awesome-ban/raw/master/themes/darkblue/screenshots/screen2.png)
 ---
 
-![](https://github.com/4ban/awesome-ban/raw/master/themes/ban/screenshots/screen3.png)
+![](https://github.com/4ban/awesome-ban/raw/master/themes/darkblue/screenshots/screen3.png)
 ---
 
-![](https://github.com/4ban/awesome-ban/raw/master/themes/ban/screenshots/screen4.png)
+![](https://github.com/4ban/awesome-ban/raw/master/themes/darkblue/screenshots/screen4.png)
+---
+
+![](https://github.com/4ban/awesome-ban/raw/master/themes/darkblue/screenshots/screen5.png)
+---
+
+### yellow theme
+
+![](https://github.com/4ban/awesome-ban/raw/master/themes/yellow/screenshots/screen1.png)
+---
+
+![](https://github.com/4ban/awesome-ban/raw/master/themes/yellow/screenshots/screen2.png)
+---
+
+![](https://github.com/4ban/awesome-ban/raw/master/themes/yellow/screenshots/screen3.png)
 ---
 
 ## Features
@@ -37,7 +53,7 @@ GTK3 icon theme - `Paper`
 
 Additional default software used:
 
-`dmenu nm-applet xsel nm-applet i3lock kbdd xautolock`
+`dmenu2 urxvt nm-applet xsel nm-applet yeahconsole tmux i3lock-color-git zsh oh-my-zsh-git i3lock-fancy-git kbdd xautolock`
 
 ## Installation
 
@@ -45,7 +61,7 @@ Additional default software used:
 
 `mv -bv awesome-ban/* ~/.config/awesome; rm -rf awesome-ban`
 
-`cp ~/.config/awesome/rc.lua.default ~/.config/awesome/rc.lua`
+`cp ~/.config/awesome/rc-default.lua ~/.config/awesome/rc.lua`
 
 ## Usage
 
@@ -56,30 +72,6 @@ First open your `rc.lua` in text editor and setup the configuration:
 * Change default hotkeys
 * Setup layouts
 * Set windows rules
-
-## Additional
-
-#### i3lock.
-
-Create a script as described below.
-
-```
-$ touch ~/.config/scripts/lock.sh
-# chmod +x ~/.config/scripts/lock.sh
-```
-
-File lock.sh:
-```
-#!/bin/bash
-ICON=$HOME/.config/lock.png
-TMPBG=/tmp/screen.png
-scrot /tmp/screen.png
-convert $TMPBG -scale 10% -scale 1000% $TMPBG
-convert $TMPBG $ICON -gravity center -composite -matte $TMPBG
-i3lock -u -i $TMPBG
-```
-
-`.config/lock.png` is a picture of a locker with transparent background.
 
 ##### F.A.Q.
 
