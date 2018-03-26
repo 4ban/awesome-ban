@@ -18,6 +18,12 @@ Inspired by [awesome-copycats](https://github.com/lcpz/awesome-copycats)
 ![](https://github.com/4ban/awesome-ban/raw/master/themes/darkblue/screenshots/screen3.png)
 ---
 
+![](https://github.com/4ban/awesome-ban/raw/master/themes/darkblue/screenshots/screen4.png)
+---
+
+![](https://github.com/4ban/awesome-ban/raw/master/themes/darkblue/screenshots/screen5.png)
+---
+
 ### yellow theme
 
 ![](https://github.com/4ban/awesome-ban/raw/master/themes/yellow/screenshots/screen1.png)
