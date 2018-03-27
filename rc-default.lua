@@ -47,6 +47,7 @@ end
 -- Autostart programs
 run_once({ "kbdd" })
 run_once({ "nm-applet -sm-disable" })
+run_once({ "compton" })
 run_once({ "wmname LG3D" }) -- Fix for java applications
 run_once({ "xautolock -time 10 -locker '/usr/share/i3lock-fancy/lock -f Meslo-LG-S-Regular -t Locked' -- scrot" })
 -- Variable definitions
@@ -60,6 +61,7 @@ local chosen_theme = themes[2]
 local window_titlebar = true  
 -- Settings for dmenu prompt
 local dmenu_settings = "dmenu_run -fn 'Meslo LGS Regular-10' -i -l 10 -p 'Run:' -nb '#32302f' -nf '#a89984' -sb '#458588' -sf '#2d2d2d' -h 10 -w 800 -y 350 -x 400"
+local rofi_settings = "rofi -show run"
 local i3lock_settings = "i3lock-fancy -f Meslo-LG-S-Regular -t 'Locked' -n -- scrot"
 local modkey       = "Mod4"
 local altkey       = "Mod1"
@@ -503,7 +505,8 @@ globalkeys = awful.util.table.join(
         {description = "show dmenu", group = "launcher"}),
     --]]
     -- Prompt
-    awful.key({ altkey }, "F2", function () awful.util.spawn(dmenu_settings) end),
+    awful.key({ altkey }, "F1", function () awful.util.spawn(dmenu_settings) end),
+    awful.key({ altkey }, "F2", function () awful.util.spawn(rofi_settings) end),
     awful.key({ altkey }, "o", function () awful.screen.focused().mypromptbox:run() end,
               {description = "run prompt", group = "launcher"}),
 
