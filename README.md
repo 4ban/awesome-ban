@@ -12,6 +12,10 @@ Inspired by [awesome-copycats](https://github.com/lcpz/awesome-copycats)
 ![](https://github.com/4ban/awesome-ban/raw/master/themes/darkblue/screenshots/screen1.png)
 ---
 
+#### With compton and rofi
+![](https://github.com/4ban/awesome-ban/raw/master/themes/darkblue/screenshots/screen1.5.png)
+---
+
 ![](https://github.com/4ban/awesome-ban/raw/master/themes/darkblue/screenshots/screen2.png)
 ---
 
@@ -53,7 +57,11 @@ GTK3 icon theme - `Paper`
 
 Additional default software used:
 
-`dmenu2 urxvt nm-applet xsel nm-applet yeahconsole tmux i3lock-color-git zsh oh-my-zsh-git i3lock-fancy-git kbdd xautolock`
+`dmenu2 urxvt rofi nm-applet xsel nm-applet yeahconsole tmux i3lock-color-git zsh oh-my-zsh-git i3lock-fancy-git kbdd xautolock`
+
+Fork of [Compton](https://github.com/tryone144/compton) with new blur method "kawase"
+
+Note: compton.conf, .Xresources , colorscheme for .Xresources or ranger colorscheme on request.
 
 ## Installation
 
