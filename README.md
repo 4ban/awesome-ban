@@ -9,11 +9,11 @@ Inspired by [awesome-copycats](https://github.com/lcpz/awesome-copycats)
 
 ### darkblue theme
 
-![](https://github.com/4ban/awesome-ban/raw/master/themes/darkblue/screenshots/screen1.png)
----
-
 #### With compton and rofi
 ![](https://github.com/4ban/awesome-ban/raw/master/themes/darkblue/screenshots/screen1.5.png)
+---
+
+![](https://github.com/4ban/awesome-ban/raw/master/themes/darkblue/screenshots/screen1.png)
 ---
 
 ![](https://github.com/4ban/awesome-ban/raw/master/themes/darkblue/screenshots/screen2.png)
@@ -45,6 +45,7 @@ Inspired by [awesome-copycats](https://github.com/lcpz/awesome-copycats)
 * Scratchpads which allow you hides window in the background (not minimized, just hidden) and invoke it whenever you need it on current tag (like yeahconsole, quake)
 * Autostart background programs
 * Custom layouts
+* to be continued...
 
 ## Requirements
 Complements are provided by [Lain](https://github.com/lcpz/lain), [freedesktop](https://github.com/lcpz/freedesktop) and [scratch](https://github.com/proteansec/awesome-scratch).
@@ -61,7 +62,12 @@ Additional default software used:
 
 Fork of [Compton](https://github.com/tryone144/compton) with new blur method "kawase"
 
-Note: compton.conf, .Xresources , colorscheme for .Xresources or ranger colorscheme on request.
+## Additional
+Config files:
+* [compton.conf](https://gist.github.com/4ban/f7e15eb0c13e8402707ebc4af1bef8b9#file-compton-conf-L1)
+* [.Xresources](https://gist.github.com/4ban/f7e15eb0c13e8402707ebc4af1bef8b9#file-xresources-L1)
+* [.xrdb/color/blur](https://gist.github.com/4ban/f7e15eb0c13e8402707ebc4af1bef8b9#file-blur-L1)
+* [.oh-my-zsh/themes/ban.zsh-theme](https://gist.github.com/4ban/ad5c9ee5a98b89e60ca694751301b49f)
 
 ## Installation
 
