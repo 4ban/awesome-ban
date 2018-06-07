@@ -58,7 +58,7 @@ GTK3 icon theme - `Paper`
 
 Additional default software used:
 
-`dmenu2 urxvt rofi nm-applet xsel nm-applet yeahconsole tmux i3lock-color-git zsh oh-my-zsh-git i3lock-fancy-git kbdd xautolock`
+`dmenu2 urxvt rofi nm-applet xsel nm-applet yeahconsole tmux i3lock-color-git zsh oh-my-zsh-git i3lock-fancy-git kbdd perwindowlayoutd xautolock`
 
 Fork of [Compton](https://github.com/tryone144/compton) with new blur method "kawase"
 

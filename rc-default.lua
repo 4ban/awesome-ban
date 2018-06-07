@@ -46,6 +46,7 @@ end
 
 -- Autostart programs
 run_once({ "kbdd" })
+run_once({ "perwindowlayoutd" })
 run_once({ "nm-applet -sm-disable" })
 run_once({ "compton" })
 run_once({ "wmname LG3D" }) -- Fix for java applications
