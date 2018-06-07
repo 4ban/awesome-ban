@@ -14,7 +14,7 @@ theme.tasklist_font                             = "Terminus 10"
 theme.bg_normal                                 = "#32302f"
 theme.fg_normal                                 = "#a89984"
 theme.bg_focus                                  = "#32302f"
-theme.fg_focus                                  = "#a89984"
+theme.fg_focus                                  = "#232323"
 theme.bg_urgent                                 = "#C92132"
 theme.fg_urgent                                 = "#282828"
 
@@ -411,26 +411,29 @@ local vol_widget = wibox.container.margin(volumebg, 2, 7, 4, 4)
 local volume_widget = wibox.container.background(wibox.container.margin(wibox.widget { vol_icon, vol_widget, layout = wibox.layout.align.horizontal }, 0, 0), theme.blue)
 
 -- Keyboard layout switcher
-kbdwidget = wibox.widget.textbox()
-kbdwidget.border_width = 0
-kbdwidget.border_color = theme.bg_normal
-kbdwidget.font = theme.font
-kbdwidget:set_markup("<span foreground=".."'"..theme.fg_widget.."'".."> Eng </span>")
+-- kbdwidget = wibox.widget.textbox()
+-- kbdwidget.border_width = 0
+-- kbdwidget.border_color = theme.bg_normal
+-- kbdwidget.font = theme.font
+-- kbdwidget:set_markup("<span foreground=".."'"..theme.fg_widget.."'".."> Eng </span>")
 
-kbdstrings = {[0] = " Eng ",
-              [1] = " Rus "}
+-- kbdstrings = {[0] = " Eng ",
+--               [1] = " Rus "}
 
-dbus.request_name("session", "ru.gentoo.kbdd")
-dbus.add_match("session", "interface='ru.gentoo.kbdd',member='layoutChanged'")
-dbus.connect_signal("ru.gentoo.kbdd", function(...)
-    local data = {...}
-    local layout = data[2]
-    kbdwidget:set_markup("<span foreground=".."'"..theme.fg_widget.."'"..">" .. kbdstrings[layout] .. "</span>")
-    end
-)
-local kbd_widget = wibox.container.background(wibox.container.margin(wibox.widget { kbdwidget, layout = wibox.layout.align.horizontal }, 0, 0, 0, 0), theme.green)
+-- dbus.request_name("session", "ru.gentoo.kbdd")
+-- dbus.add_match("session", "interface='ru.gentoo.kbdd',member='layoutChanged'")
+-- dbus.connect_signal("ru.gentoo.kbdd", function(...)
+--     local data = {...}
+--     local layout = data[2]
+--     kbdwidget:set_markup("<span foreground=".."'"..theme.fg_widget.."'"..">" .. kbdstrings[layout] .. "</span>")
+--     end
+-- )
+-- local kbd_widget = wibox.container.background(wibox.container.margin(wibox.widget { kbdwidget, layout = wibox.layout.align.horizontal }, 0, 0, 0, 0), theme.green)
 
--- Chrome_button
+kbd_widget = awful.widget.keyboardlayout:new()
+local kbd_widget = wibox.container.background(wibox.container.margin(wibox.widget { kbd_widget, layout = wibox.layout.align.horizontal }, 0, 0, 0, 0), theme.green)
+
+-- -- Chrome_button
 local chrome_button = awful.widget.button({ image = theme.chrome })
 chrome_button:buttons(awful.util.table.join(
   awful.button({ }, 1, function () awful.util.spawn("google-chrome-stable") end)
@@ -494,7 +497,7 @@ function theme.connect(s)
     --s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, awful.util.tasklist_buttons)
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s, height = 16, bg = theme.bg_normal, fg = theme.fg_normal })
+    s.mywibox = awful.wibar({ position = "top", screen = s, height = 16, bg = theme.bg_normal, fg = theme.fg_focus,  })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
