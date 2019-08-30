@@ -1,5 +1,7 @@
 # Awesome WM 4.x Ban theme
 
+[<img src="https://raw.githubusercontent.com/4ban/awesome-ban/master/.github/black_img.png">](https://www.buymeacoffee.com/4ban)
+
 ## Description
 A theme for the Awesome window manager, version 4.x.
 
