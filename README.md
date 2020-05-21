@@ -71,6 +71,8 @@ Config files:
 * [.xrdb/color/blur](https://gist.github.com/4ban/f7e15eb0c13e8402707ebc4af1bef8b9#file-blur-L1)
 * [.oh-my-zsh/themes/ban.zsh-theme](https://gist.github.com/4ban/ad5c9ee5a98b89e60ca694751301b49f)
 
+[All found configuration files remained here.](https://gist.github.com/4ban/1110d8f134463199abeea81692cbbb56)
+
 ## Installation
 
 `git clone --recursive https://github.com/4ban/awesome-ban.git`
